@@ -100,6 +100,8 @@ plt.ylabel('body_mass_g')
 
 ![](fig/scatter1.png)
 
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Using different styles for plots.
@@ -169,6 +171,7 @@ sns.histplot(data=data_penguins, x='flipper_length_mm', bins=20)
 
 ![](fig/histogram1.png)
 
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
