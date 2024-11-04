@@ -11,6 +11,14 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- (??)
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: instructor
+
 ## [`matplotlib`](https://matplotlib.org/) is the most widely used scientific plotting library in Python.
 
 - Commonly use a sub-library called [`matplotlib.pyplot`](https://matplotlib.org/stable/tutorials/introductory/pyplot.html).
@@ -33,7 +41,7 @@ plt.ylabel('Position (km)')
 
 ![](fig/9_simple_position_time_plot.svg){}
 
-:::::::::::::::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Display All Open Figures
 
@@ -172,11 +180,9 @@ plt.legend()
 
 ![](fig/histogram2.png){}
 
-:::::::::::::::::::::::::
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::: challenge
+:::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Exploring other useful types of plots with seaborn 
 
