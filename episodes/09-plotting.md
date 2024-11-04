@@ -58,8 +58,6 @@ plt.show()
 This command can also be used within a Notebook - for instance, to display multiple figures
 if several are created by a single cell.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 ## Plot data directly from a [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).
 
 You can easily create plots directly from a [Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html). For example, to create a histogram of the bill_length_mm column in the data_penguins DataFrame, you can use the following code:
@@ -100,10 +98,6 @@ plt.ylabel('body_mass_g')
 
 ![](fig/scatter1.png)
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Using different styles for plots.
 
 You can choose plots style with `matplotlib` [(more here)](https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html). We can re-create the previous scatter plot using the style from the widely used ggplot2 package for R by setting the style to 'ggplot':
@@ -112,8 +106,6 @@ You can choose plots style with `matplotlib` [(more here)](https://matplotlib.or
 plt.style.use('ggplot')
 ```
 ![](fig/scatter_GG.png)
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Data can also be plotted by using `seaborn`.
 
@@ -171,10 +163,6 @@ sns.histplot(data=data_penguins, x='flipper_length_mm', bins=20)
 
 ![](fig/histogram1.png)
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Enhancing plots with additional metrics.
 
 It is important to make your diagram display useful statistics. For histograms, you can display minimum and maximum values as well as the mean value using `.axvline()` method.
@@ -230,7 +218,6 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 
 ![](fig/heatmap.png)
 
-:::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
