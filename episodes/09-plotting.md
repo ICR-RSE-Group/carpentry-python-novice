@@ -11,12 +11,12 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::: questions
+<!-- :::::::::::::::::::::::::::::::::::::::: questions
 
 - How can I plot my data?
 - How can I save my plot for publishing?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::: -->
 
 ## [`matplotlib`](https://matplotlib.org/) is the most widely used scientific plotting library in Python.
 
