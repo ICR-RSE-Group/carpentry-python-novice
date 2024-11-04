@@ -198,8 +198,6 @@ I know...
   - Given what we have seen so far,
     what index expression will get the last character in a string?
 
-### [Coffee](../episodes/05-coffee.md): 15 min (10:20)
-
 ### [Libraries](../episodes/06-libraries.md) (10:35)
 
 - Teaching: 10 min
@@ -252,8 +250,6 @@ I know...
   - Fill in the blanks to plot the minimum GDP per capita over time for European countries.
   - Modify the example to create a scatter plot of GDP per capita in Asian countries.
   - Explain what each argument to `plot` does in the following example.
-
-### [Lunch](../episodes/10-lunch.md) (12:15): 45 min
 
 ### [Lists](../episodes/11-lists.md) (13:00)
 
@@ -316,8 +312,6 @@ I know...
 - Challenges: 10 min
   - Trace the changes to the values in this program,
     being careful to distinguish local from global values.
-
-### [Coffee](16-coffee) (14:45): 15 min
 
 ### [Conditionals](17-conditionals) (15:00)
 
