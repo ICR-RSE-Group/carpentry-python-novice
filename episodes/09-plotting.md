@@ -60,6 +60,127 @@ if several are created by a single cell.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Plot data directly from a [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).
+
+You can easily create plots directly from a [Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html). For example, to create a histogram of the bill_length_mm column in the data_penguins DataFrame, you can use the following code:
+
+```python
+data_penguins['bill_length_mm'].plot(kind='hist', bins=5)
+```
+
+![](fig/basic_plot.png){}
+
+## Many styles of plot are available.
+
+Let's plot scatter plot to see the correlation between bill length and body mass of penguins using `matplotlib`.
+
+- First you need to select figure size using figure parameter in `.figure` method under `figsize` parameter.
+
+```python
+plt.figure(figsize=(4,4))
+```
+
+- Use scatter method to plot a scatterplot.
+
+```python
+plt.scatter(data_penguins['bill_length_mm'], data_penguins['body_mass_g'])
+```
+
+- Finally, add additinal information like title, and x and y axis names 
+
+Full code:
+
+```python
+plt.figure(figsize=(4,4))
+plt.scatter(data_penguins['bill_length_mm'], data_penguins['body_mass_g'])
+plt.title('bill_length_mm vs body_mass_g')
+plt.xlabel('bill_length_mm')
+plt.ylabel('body_mass_g')
+```
+
+![](fig/scatter1.png){}
+
+## Using different styles for plots.
+
+You can choose plots style with `matplotlib` [(more here)](https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html). We can re-create the previous scatter plot using the style from the widely used ggplot2 package for R by setting the style to 'ggplot':
+
+```python
+plt.style.use('ggplot')
+```
+![](fig/scatter_GG.png){}
+
+## Data can also be plotted by using `seaborn`.
+
+Plots in python are usually plotted using `matplotlib` and `seaborn`. Here is an example of plotting the same scatter plot using `seaborn` with points coloured by species. 
+
+We can also add a slope line which describes the correlation between the points, providing additional information about the data.
+
+```python
+import seaborn as sns
+
+plt.figure(figsize=(4,4))
+sns.scatterplot(data=data_penguins, x='bill_length_mm', y='body_mass_g', hue='species')
+
+slope, intercept = np.polyfit(data['bill_length_mm'], data_penguins['body_mass_g'], 1) # 1 because linear (polynomial)
+x = np.linspace(data_penguins['bill_length_mm'].min(), data_penguins['bill_length_mm'].max(), 100)
+y = slope * x + intercept
+plt.plot(x, y, color='black', label=f'Linear fit: y = {slope:.2f}x + {intercept:.2f}')
+
+plt.title('bill_length_mm vs body_mass_g')
+plt.xlabel('bill_length_mm')
+plt.ylabel('body_mass_g')
+plt.legend()
+```
+
+![](fig/scatter2.png){}
+
+The pairplot function in `seaborn` is a powerful tool for visualising relationships between multiple variables in a dataset and get a comprehensive overview of the dataset:
+
+```python
+import pandas as pd
+
+data_penguins = pd.read_csv('data-palmers-penguins.csv')
+sns.pairplot(data_penguins, hue="species")
+```
+
+![](fig/pairplot.png){}
+
+## More examples of plots.
+
+In both `matplotlib` and `seaborn`, you can plot many types of plots:
+
+- Scatter Plots: useful for visualising relationships between two continuous variables.
+- Histograms: great for showing the distribution of a single continuous variable.
+- Bar Plots: effective for comparing categorical data.
+- Line Plots: ideal for displaying trends over time or continuous data.
+
+In the following example, we create a histogram to visualize the distribution of flipper lengths in the penguins dataset. This plot will help us understand how flipper lengths vary across the population.
+
+```python
+plt.figure(figsize=(4,4))
+# code for matplotlib
+# plt.hist(data['flipper_length_mm'], bins=20)
+sns.histplot(data=data_penguins, x='flipper_length_mm', bins=20)
+```
+
+![](fig/histogram1.png){}
+
+## Enhancing plots with additional metrics.
+
+It is important to make your diagram display useful statistics. For histograms, you can display minimum and maximum values as well as the mean value using `.axvline()` method.
+
+```python
+plt.figure(figsize=(4,4))
+sns.histplot(data=data_penguins, x='flipper_length_mm', bins=20)
+
+plt.axvline(data_penguins['flipper_length_mm'].min(), label='Min', color='blue')
+plt.axvline(data_penguins['flipper_length_mm'].max(), label='Max', color='red')
+plt.axvline(data_penguins['flipper_length_mm'].mean(), label='Mean', color='black')
+plt.legend()
+```
+
+![](fig/histogram2.png){}
+
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Saving your plot to a file
