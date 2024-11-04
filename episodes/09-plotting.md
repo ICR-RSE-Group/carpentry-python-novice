@@ -13,11 +13,10 @@ exercises: 15
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- (??)
+- How can I plot my data?
+- How can I save my plot for publishing?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::: instructor
 
 ## [`matplotlib`](https://matplotlib.org/) is the most widely used scientific plotting library in Python.
 
@@ -39,9 +38,9 @@ plt.xlabel('Time (hr)')
 plt.ylabel('Position (km)')
 ```
 
-![](fig/9_simple_position_time_plot.svg){}
+![](fig/9_simple_position_time_plot.svg){alt='A line chart showing time (hr) relative to position (km), using the values provided in the code block above. By default, the plotted line is blue against a white background, and the axes have been scaled automatically to fit the range of the input data.'}
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Display All Open Figures
 
@@ -59,168 +58,272 @@ plt.show()
 This command can also be used within a Notebook - for instance, to display multiple figures
 if several are created by a single cell.
 
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Plot data directly from a [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).
 
-You can easily create plots directly from a [Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html). For example, to create a histogram of the bill_length_mm column in the data_penguins DataFrame, you can use the following code:
-
-```python
-data_penguins['bill_length_mm'].plot(kind='hist', bins=5)
-```
-
-![](fig/basic_plot.png){}
-
-## Many styles of plot are available.
-
-Let's plot scatter plot to see the correlation between bill length and body mass of penguins using `matplotlib`.
-
-- First you need to select figure size using figure parameter in `.figure` method under `figsize` parameter.
-
-```python
-plt.figure(figsize=(4,4))
-```
-
-- Use scatter method to plot a scatterplot.
-
-```python
-plt.scatter(data_penguins['bill_length_mm'], data_penguins['body_mass_g'])
-```
-
-- Finally, add additinal information like title, and x and y axis names 
-
-Full code:
-
-```python
-plt.figure(figsize=(4,4))
-plt.scatter(data_penguins['bill_length_mm'], data_penguins['body_mass_g'])
-plt.title('bill_length_mm vs body_mass_g')
-plt.xlabel('bill_length_mm')
-plt.ylabel('body_mass_g')
-```
-
-![](fig/scatter1.png){}
-
-## Using different styles for plots.
-
-You can choose plots style with `matplotlib` [(more here)](https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html). We can re-create the previous scatter plot using the style from the widely used ggplot2 package for R by setting the style to 'ggplot':
-
-```python
-plt.style.use('ggplot')
-```
-![](fig/scatter_GG.png){}
-
-## Data can also be plotted by using `seaborn`.
-
-Plots in python are usually plotted using `matplotlib` and `seaborn`. Here is an example of plotting the same scatter plot using `seaborn` with points coloured by species. 
-
-We can also add a slope line which describes the correlation between the points, providing additional information about the data.
-
-```python
-import seaborn as sns
-
-plt.figure(figsize=(4,4))
-sns.scatterplot(data=data_penguins, x='bill_length_mm', y='body_mass_g', hue='species')
-
-slope, intercept = np.polyfit(data['bill_length_mm'], data_penguins['body_mass_g'], 1) # 1 because linear (polynomial)
-x = np.linspace(data_penguins['bill_length_mm'].min(), data_penguins['bill_length_mm'].max(), 100)
-y = slope * x + intercept
-plt.plot(x, y, color='black', label=f'Linear fit: y = {slope:.2f}x + {intercept:.2f}')
-
-plt.title('bill_length_mm vs body_mass_g')
-plt.xlabel('bill_length_mm')
-plt.ylabel('body_mass_g')
-plt.legend()
-```
-
-![](fig/scatter2.png){}
-
-The pairplot function in `seaborn` is a powerful tool for visualising relationships between multiple variables in a dataset and get a comprehensive overview of the dataset:
+- We can also plot [Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html).
+- Before plotting, we convert the column headings from a `string` to `integer` data type, since they represent numerical values,
+  using [str.replace()](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.replace.html) to remove the `gpdPercap_`
+  prefix and then [astype(int)](https://pandas.pydata.org/docs/reference/api/pandas.Series.astype.html)
+  to convert the series of string values (`['1952', '1957', ..., '2007']`) to a series of integers: `[1925, 1957, ..., 2007]`.
 
 ```python
 import pandas as pd
 
-data_penguins = pd.read_csv('data-palmers-penguins.csv')
-sns.pairplot(data_penguins, hue="species")
+data = pd.read_csv('data/gapminder_gdp_oceania.csv', index_col='country')
+
+# Extract year from last 4 characters of each column name
+# The current column names are structured as 'gdpPercap_(year)', 
+# so we want to keep the (year) part only for clarity when plotting GDP vs. years
+# To do this we use replace(), which removes from the string the characters stated in the argument
+# This method works on strings, so we use replace() from Pandas Series.str vectorized string functions
+
+years = data.columns.str.replace('gdpPercap_', '')
+
+# Convert year values to integers, saving results back to dataframe
+
+data.columns = years.astype(int)
+
+data.loc['Australia'].plot()
 ```
 
-![](fig/pairplot.png){}
+![](fig/9_gdp_australia.svg){alt='GDP plot for Australia'}
 
-## More examples of plots.
+## Select and transform data, then plot it.
 
-In both `matplotlib` and `seaborn`, you can plot many types of plots:
-
-- Scatter Plots: useful for visualising relationships between two continuous variables.
-- Histograms: great for showing the distribution of a single continuous variable.
-- Bar Plots: effective for comparing categorical data.
-- Line Plots: ideal for displaying trends over time or continuous data.
-
-In the following example, we create a histogram to visualize the distribution of flipper lengths in the penguins dataset. This plot will help us understand how flipper lengths vary across the population.
+- By default, [`DataFrame.plot`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.html#pandas.DataFrame.plot) plots with the rows as the X axis.
+- We can transpose the data in order to plot multiple series.
 
 ```python
-plt.figure(figsize=(4,4))
-# code for matplotlib
-# plt.hist(data['flipper_length_mm'], bins=20)
-sns.histplot(data=data_penguins, x='flipper_length_mm', bins=20)
+data.T.plot()
+plt.ylabel('GDP per capita')
 ```
 
-![](fig/histogram1.png){}
+![](fig/9_gdp_australia_nz.svg){alt='GDP plot for Australia and New Zealand'}
 
-## Enhancing plots with additional metrics.
+## Many styles of plot are available.
 
-It is important to make your diagram display useful statistics. For histograms, you can display minimum and maximum values as well as the mean value using `.axvline()` method.
+- For example, do a bar plot using a fancier style.
 
 ```python
-plt.figure(figsize=(4,4))
-sns.histplot(data=data_penguins, x='flipper_length_mm', bins=20)
+plt.style.use('ggplot')
+data.T.plot(kind='bar')
+plt.ylabel('GDP per capita')
+```
 
-plt.axvline(data_penguins['flipper_length_mm'].min(), label='Min', color='blue')
-plt.axvline(data_penguins['flipper_length_mm'].max(), label='Max', color='red')
-plt.axvline(data_penguins['flipper_length_mm'].mean(), label='Mean', color='black')
+![](fig/9_gdp_bar.svg){alt='GDP barplot for Australia'}
+
+## Data can also be plotted by calling the `matplotlib` `plot` function directly.
+
+- The command is `plt.plot(x, y)`
+- The color and format of markers can also be specified as an additional optional argument e.g., `b-` is a blue line, `g--` is a green dashed line.
+
+## Get Australia data from dataframe
+
+```python
+years = data.columns
+gdp_australia = data.loc['Australia']
+
+plt.plot(years, gdp_australia, 'g--')
+```
+
+![](fig/9_gdp_australia_formatted.svg){alt='GDP formatted plot for Australia'}
+
+## Can plot many sets of data together.
+
+```python
+# Select two countries' worth of data.
+gdp_australia = data.loc['Australia']
+gdp_nz = data.loc['New Zealand']
+
+# Plot with differently-colored markers.
+plt.plot(years, gdp_australia, 'b-', label='Australia')
+plt.plot(years, gdp_nz, 'g-', label='New Zealand')
+
+# Create legend.
+plt.legend(loc='upper left')
+plt.xlabel('Year')
+plt.ylabel('GDP per capita ($)')
+```
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Adding a Legend
+
+Often when plotting multiple datasets on the same figure it is desirable to have
+a legend describing the data.
+
+This can be done in `matplotlib` in two stages:
+
+- Provide a label for each dataset in the figure:
+
+```python
+plt.plot(years, gdp_australia, label='Australia')
+plt.plot(years, gdp_nz, label='New Zealand')
+```
+
+- Instruct `matplotlib` to create the legend.
+
+```python
 plt.legend()
 ```
 
-![](fig/histogram2.png){}
+By default matplotlib will attempt to place the legend in a suitable position. If you
+would rather specify a position this can be done with the `loc=` argument, e.g to place
+the legend in the upper left corner of the plot, specify `loc='upper left'`
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+![](fig/9_gdp_australia_nz_formatted.svg){alt='GDP formatted plot for Australia and New Zealand'}
+
+- Plot a scatter plot correlating the GDP of Australia and New Zealand
+- Use either `plt.scatter` or `DataFrame.plot.scatter`
+
+```python
+plt.scatter(gdp_australia, gdp_nz)
+```
+
+![](fig/9_gdp_correlation_plt.svg){alt='GDP correlation using plt.scatter'}
+
+```python
+data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
+```
+
+![](fig/9_gdp_correlation_data.svg){alt='GDP correlation using data.T.plot.scatter'}
+
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Exploring other useful types of plots with seaborn 
+## Minima and Maxima
 
-Use `seaborn` documentation to create the following plots:
+Fill in the blanks below to plot the minimum GDP per capita over time
+for all the countries in Europe.
+Modify it again to plot the maximum GDP per capita over time for Europe.
 
-- Boxplot - plot variation of body mass of the penguins by species
-- Violin - plot variation of bil length of the penguins by their location (island)
-- Heatmap - plot a heat map showing correlation between numerical features in the plot (hint: you first need to find out how to create a correlation matrix).
-
+```python
+data_europe = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+data_europe.____.plot(label='min')
+data_europe.____
+plt.legend(loc='best')
+plt.xticks(rotation=90)
+```
 
 :::::::::::::::  solution
 
 ## Solution
 
 ```python
-plt.figure(figsize=(8,6))
-data.boxplot(column='body_mass_g', by='species')
+data_europe = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+data_europe.min().plot(label='min')
+data_europe.max().plot(label='max')
+plt.legend(loc='best')
+plt.xticks(rotation=90)
 ```
 
-![](fig/boxplot.png){}
+![](fig/9_minima_maxima_solution.png){alt='Minima Maxima Solution'}
 
-```python
-sns.violinplot(data=data_penguins, x='island', y='bill_length_mm')
-```
 
-![](fig/violinplot.png){}
 
-```python
-correlation_matrix = data_penguins.select_dtypes(include='number').corr()
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
-```
-
-![](fig/heatmap.png){}
-
+:::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::: callout
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Correlations
+
+Modify the example in the notes to create a scatter plot showing
+the relationship between the minimum and maximum GDP per capita
+among the countries in Asia for each year in the data set.
+What relationship do you see (if any)?
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+data_asia = pd.read_csv('data/gapminder_gdp_asia.csv', index_col='country')
+data_asia.describe().T.plot(kind='scatter', x='min', y='max')
+```
+
+![](fig/9_correlations_solution1.svg){alt='Correlations Solution 1'}
+
+No particular correlations can be seen between the minimum and maximum GDP values
+year on year. It seems the fortunes of asian countries do not rise and fall together.
+
+
+:::::::::::::::::::::::::
+
+You might note that the variability in the maximum is much higher than
+that of the minimum.  Take a look at the maximum and the max indexes:
+
+```python
+data_asia = pd.read_csv('data/gapminder_gdp_asia.csv', index_col='country')
+data_asia.max().plot()
+print(data_asia.idxmax())
+print(data_asia.idxmin())
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+![](fig/9_correlations_solution2.png){alt='Correlations Solution 2'}
+
+Seems the variability in this value is due to a sharp drop after 1972.
+Some geopolitics at play perhaps? Given the dominance of oil producing countries,
+maybe the Brent crude index would make an interesting comparison?
+Whilst Myanmar consistently has the lowest GDP, the highest GDP nation has varied
+more notably.
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## More Correlations
+
+This short program creates a plot showing
+the correlation between GDP and life expectancy for 2007,
+normalizing marker size by population:
+
+```python
+data_all = pd.read_csv('data/gapminder_all.csv', index_col='country')
+data_all.plot(kind='scatter', x='gdpPercap_2007', y='lifeExp_2007',
+              s=data_all['pop_2007']/1e6)
+```
+
+Using online help and other resources,
+explain what each argument to `plot` does.
+
+:::::::::::::::  solution
+
+## Solution
+
+![](fig/9_more_correlations_solution.svg){alt='More Correlations Solution'}
+
+A good place to look is the documentation for the plot function -
+help(data\_all.plot).
+
+kind - As seen already this determines the kind of plot to be drawn.
+
+x and y - A column name or index that determines what data will be
+placed on the x and y axes of the plot
+
+s - Details for this can be found in the documentation of plt.scatter.
+A single number or one value for each data point. Determines the size
+of the plotted points.
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Saving your plot to a file
 
@@ -237,13 +340,6 @@ plt.savefig('my_figure.png')
 will save the current figure to the file `my_figure.png`. The file format
 will automatically be deduced from the file name extension (other formats
 are pdf, ps, eps and svg).
-
-It is also important to note that you can specify the DPI (dots per inch) when saving a figure with plt. Here's a basic example:
-
-```python
-plt.savefig('my_figure.png', dpi=300)
-```
-In this example, dpi=300 will save the figure at 300 DPI, which is a good quality for printing. This is also important if you are creating a figure for journal articles, where there are specific DPI standards. 
 
 Note that functions in `plt` refer to a global figure variable
 and after a figure has been displayed to the screen (e.g. with `plt.show`)
@@ -264,7 +360,7 @@ fig.savefig('my_figure.png')
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::: callout
+:::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Making your plots accessible
 
@@ -286,5 +382,4 @@ Whenever you are generating plots to go into a paper or a presentation, there ar
 - Can plot many sets of data together.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
 
