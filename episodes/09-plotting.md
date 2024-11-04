@@ -193,7 +193,7 @@ would rather specify a position this can be done with the `loc=` argument, e.g t
 the legend in the upper left corner of the plot, specify `loc='upper left'`
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
+<!-- 
 ## Enhancing plots with additional metrics.
 
 It is important to make your diagram display useful statistics. For histograms, you can display minimum and maximum values as well as the mean value using `.axvline()` method.
@@ -248,7 +248,6 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Making your plots accessible
@@ -271,4 +270,4 @@ Whenever you are generating plots to go into a paper or a presentation, there ar
 - Can plot many sets of data together.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
+ -->
