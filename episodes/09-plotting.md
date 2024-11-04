@@ -244,6 +244,100 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 
 ![](fig/heatmap.png){}
 
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Correlations
+
+Modify the example in the notes to create a scatter plot showing
+the relationship between the minimum and maximum GDP per capita
+among the countries in Asia for each year in the data set.
+What relationship do you see (if any)?
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+data_asia = pd.read_csv('data/gapminder_gdp_asia.csv', index_col='country')
+data_asia.describe().T.plot(kind='scatter', x='min', y='max')
+```
+
+![](fig/9_correlations_solution1.svg){alt='Correlations Solution 1'}
+
+No particular correlations can be seen between the minimum and maximum GDP values
+year on year. It seems the fortunes of asian countries do not rise and fall together.
+
+
+:::::::::::::::::::::::::
+
+You might note that the variability in the maximum is much higher than
+that of the minimum.  Take a look at the maximum and the max indexes:
+
+```python
+data_asia = pd.read_csv('data/gapminder_gdp_asia.csv', index_col='country')
+data_asia.max().plot()
+print(data_asia.idxmax())
+print(data_asia.idxmin())
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+![](fig/9_correlations_solution2.png){alt='Correlations Solution 2'}
+
+Seems the variability in this value is due to a sharp drop after 1972.
+Some geopolitics at play perhaps? Given the dominance of oil producing countries,
+maybe the Brent crude index would make an interesting comparison?
+Whilst Myanmar consistently has the lowest GDP, the highest GDP nation has varied
+more notably.
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## More Correlations
+
+This short program creates a plot showing
+the correlation between GDP and life expectancy for 2007,
+normalizing marker size by population:
+
+```python
+data_all = pd.read_csv('data/gapminder_all.csv', index_col='country')
+data_all.plot(kind='scatter', x='gdpPercap_2007', y='lifeExp_2007',
+              s=data_all['pop_2007']/1e6)
+```
+
+Using online help and other resources,
+explain what each argument to `plot` does.
+
+:::::::::::::::  solution
+
+## Solution
+
+![](fig/9_more_correlations_solution.svg){alt='More Correlations Solution'}
+
+A good place to look is the documentation for the plot function -
+help(data\_all.plot).
+
+kind - As seen already this determines the kind of plot to be drawn.
+
+x and y - A column name or index that determines what data will be
+placed on the x and y axes of the plot
+
+s - Details for this can be found in the documentation of plt.scatter.
+A single number or one value for each data point. Determines the size
+of the plotted points.
+
+
 
 :::::::::::::::::::::::::
 
