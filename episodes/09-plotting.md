@@ -53,6 +53,8 @@ if several are created by a single cell.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Plot data directly from a [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).
 
 You can easily create plots directly from a [Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html). For example, to create a histogram of the bill_length_mm column in the data_penguins DataFrame, you can use the following code:
