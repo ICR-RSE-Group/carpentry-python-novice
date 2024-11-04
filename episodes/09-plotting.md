@@ -33,7 +33,7 @@ plt.ylabel('Position (km)')
 
 ![](fig/9_simple_position_time_plot.svg){}
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 
 ## Display All Open Figures
 
@@ -51,9 +51,7 @@ plt.show()
 This command can also be used within a Notebook - for instance, to display multiple figures
 if several are created by a single cell.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::: 
 
 ## Plot data directly from a [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).
 
@@ -180,7 +178,7 @@ plt.legend()
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+::::::::::::::::::::::::::::::::::::::: challenge
 
 ## Exploring other useful types of plots with seaborn 
 
@@ -218,7 +216,7 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 
 ## Saving your plot to a file
 
@@ -262,7 +260,7 @@ fig.savefig('my_figure.png')
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 
 ## Making your plots accessible
 
