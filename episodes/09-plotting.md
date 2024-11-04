@@ -181,6 +181,44 @@ plt.legend()
 
 ![](fig/histogram2.png){}
 
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exploring other useful types of plots with seaborn 
+
+Use `seaborn` documentation to create the following plots:
+
+- Boxplot - plot variation of body mass of the penguins by species
+- Violin - plot variation of bil length of the penguins by their location (island)
+- Heatmap - plot a heat map showing correlation between numerical features in the plot (hint: you first need to find out how to create a correlation matrix).
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+plt.figure(figsize=(8,6))
+data.boxplot(column='body_mass_g', by='species')
+```
+
+![](fig/boxplot.png){}
+
+```python
+sns.violinplot(data=data_penguins, x='island', y='bill_length_mm')
+```
+
+![](fig/violinplot.png){}
+
+```python
+correlation_matrix = data_penguins.select_dtypes(include='number').corr()
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+```
+
+![](fig/heatmap.png){}
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Saving your plot to a file
