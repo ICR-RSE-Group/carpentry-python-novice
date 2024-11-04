@@ -33,7 +33,7 @@ plt.ylabel('Position (km)')
 
 ![](fig/9_simple_position_time_plot.svg){}
 
-::::::::::::::::::::::::::::::::::::::::: callout
+:::::::::::::::::::::::::::::::::::::::::::::::::: 
 
 ## Display All Open Figures
 
@@ -50,8 +50,6 @@ plt.show()
 
 This command can also be used within a Notebook - for instance, to display multiple figures
 if several are created by a single cell.
-
-:::::::::::::::::::::::::::::::::::::::::::::::::: 
 
 ## Plot data directly from a [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).
 
