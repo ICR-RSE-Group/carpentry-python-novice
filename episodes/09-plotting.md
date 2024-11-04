@@ -11,13 +11,6 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::: questions
-
-- How can I plot my data?
-- How can I save my plot for publishing?
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 ## [`matplotlib`](https://matplotlib.org/) is the most widely used scientific plotting library in Python.
 
 - Commonly use a sub-library called [`matplotlib.pyplot`](https://matplotlib.org/stable/tutorials/introductory/pyplot.html).
@@ -38,7 +31,7 @@ plt.xlabel('Time (hr)')
 plt.ylabel('Position (km)')
 ```
 
-![](fig/9_simple_position_time_plot.svg)
+![](fig/9_simple_position_time_plot.svg){}
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -58,6 +51,8 @@ plt.show()
 This command can also be used within a Notebook - for instance, to display multiple figures
 if several are created by a single cell.
 
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Plot data directly from a [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).
 
 You can easily create plots directly from a [Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html). For example, to create a histogram of the bill_length_mm column in the data_penguins DataFrame, you can use the following code:
@@ -66,7 +61,7 @@ You can easily create plots directly from a [Pandas dataframes](https://pandas.p
 data_penguins['bill_length_mm'].plot(kind='hist', bins=5)
 ```
 
-![](fig/basic_plot.png)
+![](fig/basic_plot.png){}
 
 ## Many styles of plot are available.
 
@@ -96,7 +91,7 @@ plt.xlabel('bill_length_mm')
 plt.ylabel('body_mass_g')
 ```
 
-![](fig/scatter1.png)
+![](fig/scatter1.png){}
 
 ## Using different styles for plots.
 
@@ -105,7 +100,7 @@ You can choose plots style with `matplotlib` [(more here)](https://matplotlib.or
 ```python
 plt.style.use('ggplot')
 ```
-![](fig/scatter_GG.png)
+![](fig/scatter_GG.png){}
 
 ## Data can also be plotted by using `seaborn`.
 
@@ -130,7 +125,7 @@ plt.ylabel('body_mass_g')
 plt.legend()
 ```
 
-![](fig/scatter2.png)
+![](fig/scatter2.png){}
 
 The pairplot function in `seaborn` is a powerful tool for visualising relationships between multiple variables in a dataset and get a comprehensive overview of the dataset:
 
@@ -141,7 +136,7 @@ data_penguins = pd.read_csv('data-palmers-penguins.csv')
 sns.pairplot(data_penguins, hue="species")
 ```
 
-![](fig/pairplot.png)
+![](fig/pairplot.png){}
 
 ## More examples of plots.
 
@@ -161,7 +156,7 @@ plt.figure(figsize=(4,4))
 sns.histplot(data=data_penguins, x='flipper_length_mm', bins=20)
 ```
 
-![](fig/histogram1.png)
+![](fig/histogram1.png){}
 
 ## Enhancing plots with additional metrics.
 
@@ -177,7 +172,7 @@ plt.axvline(data_penguins['flipper_length_mm'].mean(), label='Mean', color='blac
 plt.legend()
 ```
 
-![](fig/histogram2.png)
+![](fig/histogram2.png){}
 
 :::::::::::::::::::::::::
 
@@ -203,20 +198,20 @@ plt.figure(figsize=(8,6))
 data.boxplot(column='body_mass_g', by='species')
 ```
 
-![](fig/boxplot.png)
+![](fig/boxplot.png){}
 
 ```python
 sns.violinplot(data=data_penguins, x='island', y='bill_length_mm')
 ```
 
-![](fig/violinplot.png)
+![](fig/violinplot.png){}
 
 ```python
 correlation_matrix = data_penguins.select_dtypes(include='number').corr()
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 ```
 
-![](fig/heatmap.png)
+![](fig/heatmap.png){}
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
