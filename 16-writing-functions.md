@@ -161,7 +161,7 @@ def another_function
   print("So they are usually not too hard to fix.")
 ```
 
-:::::::::::::::  solution
+::::::::::::::: solution
 
 ## Solution
 
