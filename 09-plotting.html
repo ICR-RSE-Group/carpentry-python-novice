@@ -511,7 +511,12 @@ code:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>data_penguins[<span class="st">'bill_length_mm'</span>].plot(kind<span class="op">=</span><span class="st">'hist'</span>, bins<span class="op">=</span><span class="dv">5</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>data_cancer <span class="op">=</span> pd.read_csv(<span class="st">'data-palmers-penguins.csv'</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>data_penguins[<span class="st">'bill_length_mm'</span>].plot(kind<span class="op">=</span><span class="st">'hist'</span>, bins<span class="op">=</span><span class="dv">5</span>)</span></code></pre>
 </div>
 <figure><img src="fig/basic_plot.png" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="many-styles-of-plot-are-available-">Many styles of plot are available.<a class="anchor" aria-label="anchor" href="#many-styles-of-plot-are-available-"></a></h2>
 <hr class="half-width"><p>Let’s plot scatter plot to see the correlation between bill length
@@ -556,24 +561,27 @@ from the widely used ggplot2 package for R by setting the style to
 <code>seaborn</code>. Here is an example of plotting the same scatter
 plot using <code>seaborn</code> with points coloured by species.</p>
 <p>We can also add a slope line which describes the correlation between
-the points, providing additional information about the data.</p>
+the points, providing additional information about the data. We will
+need to use some methods from the <code>numpy</code> library and
+therefore need to import it along with <code>seaborn</code>.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>data_penguins, x<span class="op">=</span><span class="st">'bill_length_mm'</span>, y<span class="op">=</span><span class="st">'body_mass_g'</span>, hue<span class="op">=</span><span class="st">'species'</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>slope, intercept <span class="op">=</span> np.polyfit(data[<span class="st">'bill_length_mm'</span>], data_penguins[<span class="st">'body_mass_g'</span>], <span class="dv">1</span>) <span class="co"># 1 because linear (polynomial)</span></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>x <span class="op">=</span> np.linspace(data_penguins[<span class="st">'bill_length_mm'</span>].<span class="bu">min</span>(), data_penguins[<span class="st">'bill_length_mm'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>y <span class="op">=</span> slope <span class="op">*</span> x <span class="op">+</span> intercept</span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>plt.plot(x, y, color<span class="op">=</span><span class="st">'black'</span>, label<span class="op">=</span><span class="ss">f'Linear fit: y = </span><span class="sc">{</span>slope<span class="sc">:.2f}</span><span class="ss">x + </span><span class="sc">{</span>intercept<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>plt.title(<span class="st">'bill_length_mm vs body_mass_g'</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>plt.xlabel(<span class="st">'bill_length_mm'</span>)</span>
-<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>plt.ylabel(<span class="st">'body_mass_g'</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>plt.legend()</span></code></pre>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>data_penguins, x<span class="op">=</span><span class="st">'bill_length_mm'</span>, y<span class="op">=</span><span class="st">'body_mass_g'</span>, hue<span class="op">=</span><span class="st">'species'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>slope, intercept <span class="op">=</span> np.polyfit(data[<span class="st">'bill_length_mm'</span>], data_penguins[<span class="st">'body_mass_g'</span>], <span class="dv">1</span>) <span class="co"># 1 because linear (polynomial)</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>x <span class="op">=</span> np.linspace(data_penguins[<span class="st">'bill_length_mm'</span>].<span class="bu">min</span>(), data_penguins[<span class="st">'bill_length_mm'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>y <span class="op">=</span> slope <span class="op">*</span> x <span class="op">+</span> intercept</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>plt.plot(x, y, color<span class="op">=</span><span class="st">'black'</span>, label<span class="op">=</span><span class="ss">f'Linear fit: y = </span><span class="sc">{</span>slope<span class="sc">:.2f}</span><span class="ss">x + </span><span class="sc">{</span>intercept<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>plt.title(<span class="st">'bill_length_mm vs body_mass_g'</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>plt.xlabel(<span class="st">'bill_length_mm'</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>plt.ylabel(<span class="st">'body_mass_g'</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>plt.legend()</span></code></pre>
 </div>
 <figure><img src="fig/scatter2.png" class="figure mx-auto d-block"></figure><p>The pairplot function in <code>seaborn</code> is a powerful tool for
 visualising relationships between multiple variables in a dataset and
@@ -581,10 +589,7 @@ get a comprehensive overview of the dataset:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>data_penguins <span class="op">=</span> pd.read_csv(<span class="st">'data-palmers-penguins.csv'</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>sns.pairplot(data_penguins, hue<span class="op">=</span><span class="st">"species"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>sns.pairplot(data_penguins, hue<span class="op">=</span><span class="st">"species"</span>)</span></code></pre>
 </div>
 <figure><img src="fig/pairplot.png" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="more-examples-of-plots-">More examples of plots.<a class="anchor" aria-label="anchor" href="#more-examples-of-plots-"></a></h2>
 <hr class="half-width"><p>In both <code>matplotlib</code> and <code>seaborn</code>, you can
@@ -646,7 +651,7 @@ correlation matrix).</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -688,6 +693,16 @@ Calling this function, e.g. with</p>
 <p>will save the current figure to the file <code>my_figure.png</code>.
 The file format will automatically be deduced from the file name
 extension (other formats are pdf, ps, eps and svg).</p>
+<p>It is also important to note that you can specify the DPI (dots per
+inch) when saving a figure with plt. Here’s a basic example:</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>plt.savefig(<span class="st">'my_figure.png'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span></code></pre>
+</div>
+<p>In this example, dpi=300 will save the figure at 300 DPI, which is a
+good quality for printing. This is also important if you are creating a
+figure for journal articles, where there are specific DPI standards.</p>
 <p>Note that functions in <code>plt</code> refer to a global figure
 variable and after a figure has been displayed to the screen (e.g. with
 <code>plt.show</code>) matplotlib will make this variable refer to a new
@@ -699,12 +714,12 @@ in one line. In addition to using <code>plt.savefig</code>, we can save
 a reference to the current figure in a local variable (with
 <code>plt.gcf</code>) and call the <code>savefig</code> class method
 from that variable to save the figure to file.</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>data.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>fig <span class="op">=</span> plt.gcf() <span class="co"># get current figure</span></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>fig.savefig(<span class="st">'my_figure.png'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>data.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>fig <span class="op">=</span> plt.gcf() <span class="co"># get current figure</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>fig.savefig(<span class="st">'my_figure.png'</span>)</span></code></pre>
 </div>
 </div>
 </div>
