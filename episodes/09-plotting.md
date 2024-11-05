@@ -65,6 +65,11 @@ if several are created by a single cell.
 You can easily create plots directly from a [Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html). For example, to create a histogram of the bill_length_mm column in the data_penguins DataFrame, you can use the following code:
 
 ```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data_cancer = pd.read_csv('data-palmers-penguins.csv')
+
 data_penguins['bill_length_mm'].plot(kind='hist', bins=5)
 ```
 
@@ -113,10 +118,11 @@ plt.style.use('ggplot')
 
 Plots in python are usually plotted using `matplotlib` and `seaborn`. Here is an example of plotting the same scatter plot using `seaborn` with points coloured by species. 
 
-We can also add a slope line which describes the correlation between the points, providing additional information about the data.
+We can also add a slope line which describes the correlation between the points, providing additional information about the data. We will need to use some methods from the `numpy` library and therefore need to import it along with `seaborn`.
 
 ```python
 import seaborn as sns
+import numpy as np
 
 plt.figure(figsize=(4,4))
 sns.scatterplot(data=data_penguins, x='bill_length_mm', y='body_mass_g', hue='species')
@@ -137,9 +143,6 @@ plt.legend()
 The pairplot function in `seaborn` is a powerful tool for visualising relationships between multiple variables in a dataset and get a comprehensive overview of the dataset:
 
 ```python
-import pandas as pd
-
-data_penguins = pd.read_csv('data-palmers-penguins.csv')
 sns.pairplot(data_penguins, hue="species")
 ```
 
@@ -236,6 +239,13 @@ plt.savefig('my_figure.png')
 will save the current figure to the file `my_figure.png`. The file format
 will automatically be deduced from the file name extension (other formats
 are pdf, ps, eps and svg).
+
+It is also important to note that you can specify the DPI (dots per inch) when saving a figure with plt. Here's a basic example:
+
+```python
+plt.savefig('my_figure.png', dpi=300)
+```
+In this example, dpi=300 will save the figure at 300 DPI, which is a good quality for printing. This is also important if you are creating a figure for journal articles, where there are specific DPI standards. 
 
 Note that functions in `plt` refer to a global figure variable
 and after a figure has been displayed to the screen (e.g. with `plt.show`)

@@ -46,24 +46,12 @@ uniquely identifies its *entry* in the DataFrame.
 
 ```python
 import pandas as pd
-data_cancer = pd.read_csv('data-palmers-penguins.csv')
-print(data_cancer.iloc[0, 0])
+data_penguins = pd.read_csv('data-palmers-penguins.csv')
+print(data_penguins.iloc[0, 0])
 ```
 
 ```output
 Adelie
-```
-
-## Use `DataFrame.loc[..., ...]` to select values by their (entry) label.
-
-- Can specify location by row and/or column name.
-
-```python
-print(data.loc["Albania", "gdpPercap_1952"])
-```
-
-```output
-1601.056136
 ```
 
 ## Use `:` on its own to mean all columns or all rows.
@@ -71,7 +59,7 @@ print(data.loc["Albania", "gdpPercap_1952"])
 - Just like Python's usual slicing notation.
 
 ```python
-print(data.loc[0, :])
+print(data_penguins.loc[0, :])
 ```
 
 ```output
@@ -92,7 +80,7 @@ Name: 0, dtype: object
 
 ```python
 # Use a subset of data to keep output readable.
-subset = data.loc[:, 'bill_length_mm':'body_mass_g']
+subset = data_penguins.loc[:, 'bill_length_mm':'body_mass_g']
 print('Subset of data:\n', subset)
 
 # Which values were greater than 10000 ?
@@ -160,23 +148,70 @@ max               NaN            NaN         231.000000  6300.000000
 
 ## Group By: split-apply-combine
 
-::::::::::::::::::::::::::::::::::::: instructor
-Learners often struggle here, many may not work with financial data and concepts so they
-find the example concepts difficult to get their head around. The biggest problem
-though is the line generating the wealth_score, this step needs to be talked through
-throughly:
-* It uses implicit conversion between boolean and float values which 
-has not been covered in the course so far. 
-* The axis=1 argument needs to be explained clearly.
-
-:::::::::::::::::::::::::::::::::::::::::::::::::
-
 Pandas vectorizing methods and grouping operations are features that provide users
 much flexibility to analyse their data.
 
 ```python
-data.groupby('species')['body_mass_g'].mean()
+data_penguins.groupby('species')['body_mass_g'].mean()
 ```
+
+```output
+species
+Adelie       3706.164384
+Chinstrap    3733.088235
+Gentoo       5092.436975
+Name: body_mass_g, dtype: float64
+```
+
+A different way in which you could get the same output is by using an additional function `.agg()`.
+Here is an example of a single aggregation on one column:
+
+```python 
+data_penguins.groupby(["species"]).agg({'body_mass_g': 'mean'})
+```
+
+```output
+species
+Adelie       3706.164384
+Chinstrap    3733.088235
+Gentoo       5092.436975
+```
+
+There are some other useful ways in which we can use `groupby()` and `agg()`.
+Here we are preforming multiple aggregation on single column to see mean, median and standard deviation of the body mass in different species:
+
+```python
+data_penguins.groupby(["species"]).agg({'body_mass_g': ['mean', 'median', 'std']})
+```
+
+```output
+                        body_mass_g
+                  mean	median	std
+species			
+Adelie	3706.164384	3700.0	458.620135
+Chinstrap	3733.088235	3700.0	384.335081
+Gentoo	5092.436975	5050.0	501.476154
+
+```
+
+In case we want to explore two different columns and see how the mean of body mass and bill length are different between penguins of different species, based on the island they live on, we can apply specific aggregations to each column (in this case both are mean):
+
+```python
+data_penguins.groupby(["species", "island"]).agg({'body_mass_g': 'mean', 'bill_length_mm': 'mean'})
+```
+
+```output
+		            body_mass_g	bill_length_mm
+species	island		
+Adelie	Biscoe	3709.659091	38.975000
+            Dream	3701.363636	38.520000
+            Torgersen	3708.510638	39.038298
+Chinstrap	Dream	3733.088235	48.833824
+Gentoo	Biscoe	5092.436975	47.568067
+
+```
+
+Use `.reset_index()` at the end if you would like to result in a dataframe.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -191,7 +226,7 @@ Look at pandas documentation and see what method can be used to get unique value
 To get the count of unique values you can use value_counts method:
 
 ```python
-data.value_counts()
+data_penguins.value_counts()
 ```
 
 The output is
@@ -227,10 +262,43 @@ Gentoo   Biscoe     59.6            17.0           230.0              6050.0    
 ## Solution
 
 ```python
-data[(data['species'] == 'Adelie') & (data['island'] == 'Torgersen')]
+data_penguins[(data_penguins['species'] == 'Adelie') & (data_penguins['island'] == 'Torgersen')]
 ```
+
+```output
+species	island	bill_length_mm	bill_depth_mm	flipper_length_mm	body_mass_g	sex
+0	Adelie	Torgersen	39.1	18.7	181.0	3750.0	Male
+1	Adelie	Torgersen	39.5	17.4	186.0	3800.0	Female
+2	Adelie	Torgersen	40.3	18.0	195.0	3250.0	Female
+3	Adelie	Torgersen	36.7	19.3	193.0	3450.0	Female
+4	Adelie	Torgersen	39.3	20.6	190.0	3650.0	Male
+5	Adelie	Torgersen	38.9	17.8	181.0	3625.0	Female
+...	...	...	...	...	...	...	...
+120	Adelie	Torgersen	38.8	17.6	191.0	3275.0	Female
+121	Adelie	Torgersen	41.5	18.3	195.0	4300.0	Male
+122	Adelie	Torgersen	39.0	17.1	191.0	3050.0	Female
+123	Adelie	Torgersen	44.1	18.0	210.0	4000.0	Male
+124	Adelie	Torgersen	38.5	17.9	190.0	3325.0	Female
+125	Adelie	Torgersen	43.1	19.2	197.0	3500.0	Male
+```
+
 ```python
-data[(data['body_mass_g'] > 4000) & (data['flipper_length_mm'] > 200)]
+data_penguins[(data_penguins['body_mass_g'] > 4000) & (data_penguins['flipper_length_mm'] > 200)]
+```
+
+```output
+	species	island	bill_length_mm	bill_depth_mm	flipper_length_mm	body_mass_g	sex
+85	Adelie	Dream	41.1	18.1	205.0	4300.0	Male
+89	Adelie	Dream	40.8	18.9	208.0	4300.0	Male
+95	Adelie	Biscoe	41.0	20.0	203.0	4725.0	Male
+159	Chinstrap	Dream	52.0	18.1	201.0	4050.0	Male
+161	Chinstrap	Dream	50.5	19.6	201.0	4050.0	Male
+...	...	...	...	...	...	...	...
+328	Gentoo	Biscoe	47.2	13.7	214.0	4925.0	Female
+329	Gentoo	Biscoe	46.8	14.3	215.0	4850.0	Female
+330	Gentoo	Biscoe	50.4	15.7	222.0	5750.0	Male
+331	Gentoo	Biscoe	45.2	14.8	212.0	5200.0	Female
+332	Gentoo	Biscoe	49.9	16.1	213.0	5400.0	Male
 ```
 
 :::::::::::::::::::::::::
@@ -401,7 +469,7 @@ data.iloc[:, col1_index:col2_index].loc["row1":"row2"]
 
 ## Exploring available methods using the `dir()` function
 
-Python includes a `dir()` function that can be used to display all of the available methods (functions) that are built into a data object.  In Episode 4, we used some methods with a string. But we can see many more are available by using `dir()`:
+Python includes a `dir()` function that can be used to display all the available methods (functions) that are built into a data object.  In Episode 4, we used some methods with a string. But we can see many more are available by using `dir()`:
 
 ```python
 my_string = 'Hello world!'   # creation of a string object 
@@ -424,17 +492,28 @@ This command returns:
 
 You can use `help()` or <kbd>Shift</kbd>\+<kbd>Tab</kbd> to get more information about what these methods do.
 
-Assume Pandas has been imported and the Gapminder GDP data for Europe has been loaded as `data`.  Then, use `dir()`
-to find the function that prints out the median per-capita GDP across all European countries for each year that information is available.
+Assume Pandas has been imported and the penguins data has been loaded as `data_penguins`.  Then, use `dir()`
+to find the function that prints out the count of data entries across all columns.
 
 :::::::::::::::  solution
 
 ## Solution
 
-Among many choices, `dir()` lists the `median()` function as a possibility.  Thus,
+Among many choices, `dir()` lists the `count()` function as a possibility.  Thus,
 
 ```python
-data.median()
+data_penguins.count()
+```
+
+```
+species              333
+island               333
+bill_length_mm       333
+bill_depth_mm        333
+flipper_length_mm    333
+body_mass_g          333
+sex                  333
+dtype: int64
 ```
 
 :::::::::::::::::::::::::
@@ -443,12 +522,11 @@ data.median()
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Interpretation
-
-Poland's borders have been stable since 1945,
-but changed several times in the years before then.
-How would you handle this if you were creating a table of GDP per capita for Poland
-for the entire twentieth century?
+## Interpretation 
+Interpolation is estimation based of known data. 
+Imagine some measurement in the dataset are missing. 
+How would you fill in missing numerical values? 
+What factor would you take into account?
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
