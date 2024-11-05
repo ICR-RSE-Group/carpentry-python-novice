@@ -138,8 +138,8 @@ memory usage: 18.3+ KB
 ```
 
 - This is a `DataFrame`.
-- Species, island and sex columns with object values.
-- Four columns, each of which has two actual 64-bit floating point values.
+- Species, island and sex columns are categorical data, with object values.
+- bill_length_mm, bill_depth_mm, flipper_length_mm and body_mass_g columns are numerical, each of which has two actual 64-bit floating point values.
   - We will talk later about null values, which are used to represent missing observations.
 - Uses 18.3+ KB of memory.
 
