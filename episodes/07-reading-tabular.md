@@ -93,7 +93,7 @@ FileNotFoundError: [Errno 2] No such file or directory: 'data/data-palmers-pengu
 - Naming the dataframe `data_penguins_species` tells us what data it includes (`penguins`) and how it is indexed (`species`).
 
 ```python
-data_penguins_species = pd.read_csv('data/data_penguins_species.csv', index_col='species')
+data_penguins_species = pd.read_csv('data/data-palmers-penguins.csv', index_col='species')
 print(data_penguins_species)
 ```
 
@@ -186,9 +186,8 @@ max	59.600000	21.500000	231.000000	6300.000000
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Reading Other Data
-Projects/carpentry_python_mods/data-breast-cancer.csv
 Read the data in `data-breast-cancer.csv`
-(which should be in the same directory as `data-palmers-penguin.csv`)
+(which should be in the same `data` directory as `data-palmers-penguin.csv`)
 into a variable called `data_cancer`
 and display its summary statistics.
 
