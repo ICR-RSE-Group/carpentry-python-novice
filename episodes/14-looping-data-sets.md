@@ -251,13 +251,13 @@ for col in numeric_columns:
     plt.show()
 ```
 
-![](fig/boxplot_bill_depth_mm.png){}
+![](fig/boxplot_bill_depth_mm.png)
 
-![](fig/boxplot_bill_length_mm.png){}
+![](fig/boxplot_bill_length_mm.png)
 
-![](fig/boxplot_body_mass_g.png){}
+![](fig/boxplot_body_mass_g.png)
 
-![](fig/boxplot_flipper_length_mm.png){}
+![](fig/boxplot_flipper_length_mm.png)
 
 :::::::::::::::::::::::::
 
