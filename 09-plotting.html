@@ -422,7 +422,7 @@ most widely used scientific plotting library in Python.</li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Plotting</h1>
-        <p>Last updated on 2024-11-05 |
+        <p>Last updated on 2024-11-07 |
 
         <a href="https://icr-rse-group.github.io/carpentry-python-novice/edit/main/episodes/09-plotting.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -514,7 +514,7 @@ code:</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>data_cancer <span class="op">=</span> pd.read_csv(<span class="st">'data-palmers-penguins.csv'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>data_penguins <span class="op">=</span> pd.read_csv(<span class="st">'data/data-palmers-penguins.csv'</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>data_penguins[<span class="st">'bill_length_mm'</span>].plot(kind<span class="op">=</span><span class="st">'hist'</span>, bins<span class="op">=</span><span class="dv">5</span>)</span></code></pre>
 </div>
@@ -573,7 +573,7 @@ therefore need to import it along with <code>seaborn</code>.</p>
 <span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
 <span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>data_penguins, x<span class="op">=</span><span class="st">'bill_length_mm'</span>, y<span class="op">=</span><span class="st">'body_mass_g'</span>, hue<span class="op">=</span><span class="st">'species'</span>)</span>
 <span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>slope, intercept <span class="op">=</span> np.polyfit(data[<span class="st">'bill_length_mm'</span>], data_penguins[<span class="st">'body_mass_g'</span>], <span class="dv">1</span>) <span class="co"># 1 because linear (polynomial)</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>slope, intercept <span class="op">=</span> np.polyfit(data_penguins[<span class="st">'bill_length_mm'</span>], data_penguins[<span class="st">'body_mass_g'</span>], <span class="dv">1</span>) <span class="co"># 1 because linear (polynomial)</span></span>
 <span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>x <span class="op">=</span> np.linspace(data_penguins[<span class="st">'bill_length_mm'</span>].<span class="bu">min</span>(), data_penguins[<span class="st">'bill_length_mm'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
 <span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>y <span class="op">=</span> slope <span class="op">*</span> x <span class="op">+</span> intercept</span>
 <span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>plt.plot(x, y, color<span class="op">=</span><span class="st">'black'</span>, label<span class="op">=</span><span class="ss">f'Linear fit: y = </span><span class="sc">{</span>slope<span class="sc">:.2f}</span><span class="ss">x + </span><span class="sc">{</span>intercept<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
@@ -657,7 +657,7 @@ correlation matrix).</li>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>data.boxplot(column<span class="op">=</span><span class="st">'body_mass_g'</span>, by<span class="op">=</span><span class="st">'species'</span>)</span></code></pre>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>data_penguins.boxplot(column<span class="op">=</span><span class="st">'body_mass_g'</span>, by<span class="op">=</span><span class="st">'species'</span>)</span></code></pre>
 </div>
 <figure><img src="fig/boxplot.png" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -717,9 +717,10 @@ from that variable to save the figure to file.</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>data.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>fig <span class="op">=</span> plt.gcf() <span class="co"># get current figure</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>fig.savefig(<span class="st">'my_figure.png'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>plt.hist(data_penguins[<span class="st">'flipper_length_mm'</span>], bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>fig <span class="op">=</span> plt.gcf() <span class="co"># get current figure</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>fig.savefig(<span class="st">'my_figure.png'</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -829,8 +830,8 @@ Gallery</a> for more options.</li>
   "url": "https://icr-rse-group.github.io/carpentry-python-novice/09-plotting.html",
   "identifier": "https://icr-rse-group.github.io/carpentry-python-novice/09-plotting.html",
   "dateCreated": "2016-01-07",
-  "dateModified": "2024-11-05",
-  "datePublished": "2024-11-05"
+  "dateModified": "2024-11-07",
+  "datePublished": "2024-11-07"
 }
 
   </script><script>

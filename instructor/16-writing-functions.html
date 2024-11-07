@@ -423,7 +423,7 @@ parameters.</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Writing Functions</h1>
-        <p>Last updated on 2024-11-05 |
+        <p>Last updated on 2024-11-07 |
 
         <a href="https://icr-rse-group.github.io/carpentry-python-novice/edit/main/episodes/16-writing-functions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -639,7 +639,7 @@ result of call is: None</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -677,7 +677,7 @@ result of call is: None</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -745,7 +745,7 @@ result of call is: None</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li><p>The problem with the example is that the function
 <code>print_time()</code> is defined <em>after</em> the call to the
@@ -791,7 +791,7 @@ returns the minimum value in that data.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -833,7 +833,7 @@ negative numbers?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -894,12 +894,12 @@ print?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li><code>2003/2/1</code></li>
 <li>We saw examples of using <em>named arguments</em> when working with
 the pandas library. For example, when reading in a dataset using
-<code>data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')</code>,
+<code>data = pd.read_csv('data/data-palmers-penguins.csv', index_col='species')</code>,
 the last argument <code>index_col</code> is a named argument.</li>
 <li>Using named arguments can make code more readable since one can see
 from the function call what name the different arguments have inside the
@@ -977,7 +977,7 @@ error conditions. Sample output could be
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1016,34 +1016,31 @@ error conditions. Sample output could be
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a>data_asia <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_asia.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a>japan <span class="op">=</span> data_asia.loc[<span class="st">'Japan'</span>]</span></code></pre>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a>data_penguins <span class="op">=</span> pd.read_csv(<span class="st">'data/data-palmers-penguins.csv'</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a>data_penguins_adelie <span class="op">=</span> data_penguins[data_penguins[<span class="st">'species'</span>] <span class="op">==</span> <span class="st">'Adelie'</span>]</span></code></pre>
 </div>
-<ol style="list-style-type: decimal"><li>Complete the statements below to obtain the average GDP for Japan
-across the years reported for the 1980s.</li>
+<ol style="list-style-type: decimal"><li>Complete the statements below to obtain the average body mass of
+Adelie penguins.</li>
 </ol><div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>year <span class="op">=</span> <span class="dv">1983</span></span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>gdp_decade <span class="op">=</span> <span class="st">'gdpPercap_'</span> <span class="op">+</span> <span class="bu">str</span>(year <span class="op">//</span> ____)</span>
-<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>avg <span class="op">=</span> (japan.loc[gdp_decade <span class="op">+</span> ___] <span class="op">+</span> japan.loc[gdp_decade <span class="op">+</span> ___]) <span class="op">/</span> <span class="dv">2</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>____[<span class="st">'body_mass_g'</span>].____()</span></code></pre>
 </div>
-<ol start="2" style="list-style-type: decimal"><li>Abstract the code above into a single function.</li>
+<ol start="2" style="list-style-type: decimal"><li>Abstract the code above into a single function which can calculate
+the average body mass of any penguin species.</li>
 </ol><div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="kw">def</span> avg_gdp_in_decade(country, continent, year):</span>
-<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>    data_countries <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_'</span><span class="op">+</span>___<span class="op">+</span><span class="st">'.csv'</span>,delimiter<span class="op">=</span><span class="st">','</span>,index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="kw">def</span> avg_body_mass_for_species(species):</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>    data_penguins <span class="op">=</span> pd.read_csv(<span class="st">'data/data-palmers-penguins.csv'</span>)</span>
 <span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>    ____</span>
 <span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>    ____</span>
-<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a>    ____</span>
-<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a>    <span class="cf">return</span> avg</span></code></pre>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a>    <span class="cf">return</span> ____</span></code></pre>
 </div>
 <ol start="3" style="list-style-type: decimal"><li>How would you generalize this function if you did not know
-beforehand which specific years occurred as columns in the data? For
-instance, what if we also had data from years ending in 1 and 9 for each
-decade? (Hint: use the columns to filter out the ones that correspond to
-the decade, instead of enumerating them in the code.)</li>
+beforehand whether the data contain any empty values? Or if you wanted
+to calculate an average value of some other feature in the dataset?</li>
 </ol></div>
 </div>
 </div>
@@ -1052,55 +1049,52 @@ the decade, instead of enumerating them in the code.)</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>The average GDP for Japan across the years reported for the 1980s is
 computed with:</li>
 </ol><div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>year <span class="op">=</span> <span class="dv">1983</span></span>
-<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>gdp_decade <span class="op">=</span> <span class="st">'gdpPercap_'</span> <span class="op">+</span> <span class="bu">str</span>(year <span class="op">//</span> <span class="dv">10</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>avg <span class="op">=</span> (japan.loc[gdp_decade <span class="op">+</span> <span class="st">'2'</span>] <span class="op">+</span> japan.loc[gdp_decade <span class="op">+</span> <span class="st">'7'</span>]) <span class="op">/</span> <span class="dv">2</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>data_penguins_adelie[<span class="st">'body_mass_g'</span>].mean()</span></code></pre>
 </div>
 <ol start="2" style="list-style-type: decimal"><li>That code as a function is:</li>
 </ol><div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="kw">def</span> avg_gdp_in_decade(country, continent, year):</span>
-<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>    data_countries <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_'</span> <span class="op">+</span> continent <span class="op">+</span> <span class="st">'.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a>    c <span class="op">=</span> data_countries.loc[country]</span>
-<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a>    gdp_decade <span class="op">=</span> <span class="st">'gdpPercap_'</span> <span class="op">+</span> <span class="bu">str</span>(year <span class="op">//</span> <span class="dv">10</span>)</span>
-<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a>    avg <span class="op">=</span> (c.loc[gdp_decade <span class="op">+</span> <span class="st">'2'</span>] <span class="op">+</span> c.loc[gdp_decade <span class="op">+</span> <span class="st">'7'</span>])<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a>    <span class="cf">return</span> avg</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="kw">def</span> avg_body_mass_for_species(species):</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>    data_penguins <span class="op">=</span> pd.read_csv(<span class="st">'data/data-palmers-penguins.csv'</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a>    </span>
+<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a>    species_data <span class="op">=</span> data_penguins[data_penguins[<span class="st">'species'</span>] <span class="op">==</span> species]</span>
+<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a>    avg_body_mass <span class="op">=</span> species_data[<span class="st">'body_mass_g'</span>].dropna().mean()</span>
+<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" tabindex="-1"></a>    <span class="cf">return</span> avg_body_mass</span></code></pre>
 </div>
 <ol start="3" style="list-style-type: decimal"><li>To obtain the average for the relevant years, we need to loop over
 them:</li>
 </ol><div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="kw">def</span> avg_gdp_in_decade(country, continent, year):</span>
-<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a>    data_countries <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_'</span> <span class="op">+</span> continent <span class="op">+</span> <span class="st">'.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a>    c <span class="op">=</span> data_countries.loc[country]</span>
-<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a>    gdp_decade <span class="op">=</span> <span class="st">'gdpPercap_'</span> <span class="op">+</span> <span class="bu">str</span>(year <span class="op">//</span> <span class="dv">10</span>)</span>
-<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a>    total <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a>    num_years <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a>    <span class="cf">for</span> yr_header <span class="kw">in</span> c.index: <span class="co"># c's index contains reported years</span></span>
-<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a>        <span class="cf">if</span> yr_header.startswith(gdp_decade):</span>
-<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a>            total <span class="op">=</span> total <span class="op">+</span> c.loc[yr_header]</span>
-<span id="cb40-10"><a href="#cb40-10" tabindex="-1"></a>            num_years <span class="op">=</span> num_years <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb40-11"><a href="#cb40-11" tabindex="-1"></a>    <span class="cf">return</span> total<span class="op">/</span>num_years</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="kw">def</span> avg_column_for_species(data, species, column<span class="op">=</span><span class="st">'body_mass_g'</span>):</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a>  <span class="cf">if</span> column <span class="kw">not</span> <span class="kw">in</span> data.columns:</span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a>      <span class="cf">return</span> (<span class="ss">f"Column '</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">' not found in the dataset."</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a>      </span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a>  species_data <span class="op">=</span> data[data[<span class="st">'species'</span>] <span class="op">==</span> species]</span>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a>  avg_value <span class="op">=</span> species_data[column].dropna().mean()</span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a>  </span>
+<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a>  <span class="cf">return</span> avg_value</span></code></pre>
 </div>
 <p>The function can now be called by:</p>
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>avg_gdp_in_decade(<span class="st">'Japan'</span>,<span class="st">'asia'</span>,<span class="dv">1983</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>avg_adelie_body_mass <span class="op">=</span> avg_column_for_species(data_penguins, <span class="st">'Adelie'</span>, <span class="st">'body_mass_g'</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average body mass for Adelie: </span><span class="sc">{</span>avg_adelie_body_mass<span class="sc">}</span><span class="ss"> grams"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code><span><span class="fl">20880.023800000003</span></span></code></pre>
+<pre class="output" tabindex="0"><code>Average body mass for Adelie: 3706.1643835616437 grams</code></pre>
 </div>
 </div>
 </div>
@@ -1150,7 +1144,7 @@ values. Is the population trending toward a steady state?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution9" aria-expanded="false" aria-controls="collapseSolution9">
   <h4 class="accordion-header" id="headingSolution9"> Show me the solution </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li><div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1203,34 +1197,28 @@ The population seems to be approaching zero.</li>
 <h3 class="callout-title">Using Functions With Conditionals in Pandas</h3>
 <div class="callout-content">
 <p>Functions will often contain conditionals. Here is a short example
-that will indicate which quartile the argument is in based on hand-coded
-values for the quartile cut points.</p>
+that will indicate how heavy the penguin is based on hand-coded
+values.</p>
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="kw">def</span> calculate_life_quartile(exp):</span>
-<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>    <span class="cf">if</span> exp <span class="op">&lt;</span> <span class="fl">58.41</span>:</span>
-<span id="cb47-3"><a href="#cb47-3" tabindex="-1"></a>        <span class="co"># This observation is in the first quartile</span></span>
-<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb47-5"><a href="#cb47-5" tabindex="-1"></a>    <span class="cf">elif</span> exp <span class="op">&gt;=</span> <span class="fl">58.41</span> <span class="kw">and</span> exp <span class="op">&lt;</span> <span class="fl">67.05</span>:</span>
-<span id="cb47-6"><a href="#cb47-6" tabindex="-1"></a>        <span class="co"># This observation is in the second quartile</span></span>
-<span id="cb47-7"><a href="#cb47-7" tabindex="-1"></a>       <span class="cf">return</span> <span class="dv">2</span></span>
-<span id="cb47-8"><a href="#cb47-8" tabindex="-1"></a>    <span class="cf">elif</span> exp <span class="op">&gt;=</span> <span class="fl">67.05</span> <span class="kw">and</span> exp <span class="op">&lt;</span> <span class="fl">71.70</span>:</span>
-<span id="cb47-9"><a href="#cb47-9" tabindex="-1"></a>        <span class="co"># This observation is in the third quartile</span></span>
-<span id="cb47-10"><a href="#cb47-10" tabindex="-1"></a>       <span class="cf">return</span> <span class="dv">3</span></span>
-<span id="cb47-11"><a href="#cb47-11" tabindex="-1"></a>    <span class="cf">elif</span> exp <span class="op">&gt;=</span> <span class="fl">71.70</span>:</span>
-<span id="cb47-12"><a href="#cb47-12" tabindex="-1"></a>        <span class="co"># This observation is in the fourth quartile</span></span>
-<span id="cb47-13"><a href="#cb47-13" tabindex="-1"></a>       <span class="cf">return</span> <span class="dv">4</span></span>
-<span id="cb47-14"><a href="#cb47-14" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb47-15"><a href="#cb47-15" tabindex="-1"></a>        <span class="co"># This observation has bad data</span></span>
-<span id="cb47-16"><a href="#cb47-16" tabindex="-1"></a>       <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb47-17"><a href="#cb47-17" tabindex="-1"></a></span>
-<span id="cb47-18"><a href="#cb47-18" tabindex="-1"></a>calculate_life_quartile(<span class="fl">62.5</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="kw">def</span> how_heavy(weight):</span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>    <span class="cf">if</span> weight <span class="op">&lt;</span> <span class="dv">3500</span>:</span>
+<span id="cb47-3"><a href="#cb47-3" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Not heavy at all, this penguin is clearly hungry!"</span></span>
+<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a>    <span class="cf">elif</span> weight <span class="op">&gt;=</span> <span class="dv">3500</span> <span class="kw">and</span> weight <span class="op">&lt;</span> <span class="dv">4500</span>:</span>
+<span id="cb47-5"><a href="#cb47-5" tabindex="-1"></a>       <span class="cf">return</span> <span class="st">"Normal weight penguin, he is eating well!"</span></span>
+<span id="cb47-6"><a href="#cb47-6" tabindex="-1"></a>    <span class="cf">elif</span> weight <span class="op">&gt;=</span> <span class="dv">4500</span>:</span>
+<span id="cb47-7"><a href="#cb47-7" tabindex="-1"></a>       <span class="cf">return</span> <span class="st">"Heavy penguin, its eating way too much!"</span></span>
+<span id="cb47-8"><a href="#cb47-8" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb47-9"><a href="#cb47-9" tabindex="-1"></a>        <span class="co"># This observation has bad data</span></span>
+<span id="cb47-10"><a href="#cb47-10" tabindex="-1"></a>       <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb47-11"><a href="#cb47-11" tabindex="-1"></a></span>
+<span id="cb47-12"><a href="#cb47-12" tabindex="-1"></a>how_heavy(<span class="dv">5000</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code><span><span class="fl">2</span></span></code></pre>
+<pre class="output" tabindex="0"><code><span><span class="st">'Heavy penguin, its eating way too much!'</span></span></code></pre>
 </div>
 <p>That function would typically be used within a <code>for</code> loop,
 but Pandas has a different, more efficient way of doing the same thing,
@@ -1239,16 +1227,17 @@ of a dataframe. Here is an example, using the definition above.</p>
 <div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_all.csv'</span>)</span>
-<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>data[<span class="st">'life_qrtl'</span>] <span class="op">=</span> data[<span class="st">'lifeExp_1952'</span>].<span class="bu">apply</span>(calculate_life_quartile)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a>data_penguin <span class="op">=</span> pd.read_csv(<span class="st">"data/data-palmers-penguins.csv"</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>data_penguin[<span class="st">'how_heavy'</span>] <span class="op">=</span> data_penguin[<span class="st">'body_mass_g'</span>].<span class="bu">apply</span>(how_heavy)</span></code></pre>
 </div>
 <p>There is a lot in that second line, so let’s take it piece by piece.
 On the right side of the <code>=</code> we start with
-<code>data['lifeExp']</code>, which is the column in the dataframe
-called <code>data</code> labeled <code>lifExp</code>. We use the
-<code>apply()</code> to do what it says, apply the
-<code>calculate_life_quartile</code> to the value of this column for
-every row in the dataframe.</p>
+<code>data_penguin['body_mass_g']</code>, which is the column in the
+dataframe called <code>data</code> labeled <code>body_mass_g</code>. We
+use the <code>apply()</code> to do what it says, apply the
+<code>how_heavy</code> to the value of this column for every row in the
+dataframe, to create a new values for every row, under the column
+<code>how_heavy</code>.</p>
 </div>
 </div>
 </div>
@@ -1329,8 +1318,8 @@ parameters.</li>
   "url": "https://icr-rse-group.github.io/carpentry-python-novice/instructor/16-writing-functions.html",
   "identifier": "https://icr-rse-group.github.io/carpentry-python-novice/instructor/16-writing-functions.html",
   "dateCreated": "2016-01-07",
-  "dateModified": "2024-11-05",
-  "datePublished": "2024-11-05"
+  "dateModified": "2024-11-07",
+  "datePublished": "2024-11-07"
 }
 
   </script><script>
