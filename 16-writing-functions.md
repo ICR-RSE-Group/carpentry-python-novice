@@ -362,7 +362,7 @@ print_date(day=1, month=2, year=2003)
 
 1. `2003/2/1`
 2. We saw examples of using *named arguments* when working with the pandas library. For example, when reading in a dataset
-  using `data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')`, the last argument `index_col` is a
+  using `data = pd.read_csv('data/data-palmers-penguins.csv', index_col='species')`, the last argument `index_col` is a
   named argument.
 3. Using named arguments can make code more readable since one can see from the function call what name the different arguments
   have inside the function. It can also reduce the chances of passing arguments in the wrong order, since by using named arguments
@@ -452,41 +452,34 @@ def get_egg_label(mass):
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Encapsulating Data Analysis
-
 Assume that the following code has been executed:
 
 ```python
 import pandas as pd
 
-data_asia = pd.read_csv('data/gapminder_gdp_asia.csv', index_col=0)
-japan = data_asia.loc['Japan']
+data_penguins = pd.read_csv('data/data-palmers-penguins.csv')
+data_penguins_adelie = data_penguins[data_penguins['species'] == 'Adelie']
 ```
 
-1. Complete the statements below to obtain the average GDP for Japan
-  across the years reported for the 1980s.
+1. Complete the statements below to obtain the average body mass of Adelie penguins.
   
   ```python
-  year = 1983
-  gdp_decade = 'gdpPercap_' + str(year // ____)
-  avg = (japan.loc[gdp_decade + ___] + japan.loc[gdp_decade + ___]) / 2
+  ____['body_mass_g'].____()
   ```
 
-2. Abstract the code above into a single function.
+2. Abstract the code above into a single function which can calculate the average body mass of any penguin species.
   
   ```python
-  def avg_gdp_in_decade(country, continent, year):
-      data_countries = pd.read_csv('data/gapminder_gdp_'+___+'.csv',delimiter=',',index_col=0)
+  def avg_body_mass_for_species(species):
+      data_penguins = pd.read_csv('data/data-palmers-penguins.csv')
       ____
       ____
-      ____
-      return avg
+
+      return ____
   ```
 
-3. How would you generalize this function
-  if you did not know beforehand which specific years occurred as columns in the data?
-  For instance, what if we also had data from years ending in 1 and 9 for each decade?
-  (Hint: use the columns to filter out the ones that correspond to the decade,
-  instead of enumerating them in the code.)
+3. How would you generalize this function if you did not know beforehand whether the data contain any empty values? Or if you wanted to calculate an average value of some other feature in the dataset?
+
 
 :::::::::::::::  solution
 
@@ -495,46 +488,43 @@ japan = data_asia.loc['Japan']
 1. The average GDP for Japan across the years reported for the 1980s is computed with:
   
   ```python
-  year = 1983
-  gdp_decade = 'gdpPercap_' + str(year // 10)
-  avg = (japan.loc[gdp_decade + '2'] + japan.loc[gdp_decade + '7']) / 2
+  data_penguins_adelie['body_mass_g'].mean()
   ```
 
 2. That code as a function is:
   
   ```python
-  def avg_gdp_in_decade(country, continent, year):
-      data_countries = pd.read_csv('data/gapminder_gdp_' + continent + '.csv', index_col=0)
-      c = data_countries.loc[country]
-      gdp_decade = 'gdpPercap_' + str(year // 10)
-      avg = (c.loc[gdp_decade + '2'] + c.loc[gdp_decade + '7'])/2
-      return avg
+  def avg_body_mass_for_species(species):
+      data_penguins = pd.read_csv('data/data-palmers-penguins.csv')
+      
+      species_data = data_penguins[data_penguins['species'] == species]
+      avg_body_mass = species_data['body_mass_g'].dropna().mean()
+
+      return avg_body_mass
   ```
 
 3. To obtain the average for the relevant years, we need to loop over them:
   
   ```python
-  def avg_gdp_in_decade(country, continent, year):
-      data_countries = pd.read_csv('data/gapminder_gdp_' + continent + '.csv', index_col=0)
-      c = data_countries.loc[country]
-      gdp_decade = 'gdpPercap_' + str(year // 10)
-      total = 0.0
-      num_years = 0
-      for yr_header in c.index: # c's index contains reported years
-          if yr_header.startswith(gdp_decade):
-              total = total + c.loc[yr_header]
-              num_years = num_years + 1
-      return total/num_years
+  def avg_column_for_species(data, species, column='body_mass_g'):
+    if column not in data.columns:
+        return (f"Column '{column}' not found in the dataset.")
+        
+    species_data = data[data['species'] == species]
+    avg_value = species_data[column].dropna().mean()
+    
+    return avg_value
   ```
 
 The function can now be called by:
 
 ```python
-avg_gdp_in_decade('Japan','asia',1983)
+avg_adelie_body_mass = avg_column_for_species(data_penguins, 'Adelie', 'body_mass_g')
+print(f"Average body mass for Adelie: {avg_adelie_body_mass} grams")
 ```
 
 ```output
-20880.023800000003
+Average body mass for Adelie: 3706.1643835616437 grams
 ```
 
 :::::::::::::::::::::::::
@@ -620,34 +610,26 @@ density. In the model, time takes discrete values 0, 1, 2, ...
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Using Functions With Conditionals in Pandas
-
-Functions will often contain conditionals.  Here is a short example that
-will indicate which quartile the argument is in based on hand-coded values
-for the quartile cut points.
+Functions will often contain conditionals. Here is a short example that
+will indicate how heavy the penguin is based on hand-coded values.
 
 ```python
-def calculate_life_quartile(exp):
-    if exp < 58.41:
-        # This observation is in the first quartile
-        return 1
-    elif exp >= 58.41 and exp < 67.05:
-        # This observation is in the second quartile
-       return 2
-    elif exp >= 67.05 and exp < 71.70:
-        # This observation is in the third quartile
-       return 3
-    elif exp >= 71.70:
-        # This observation is in the fourth quartile
-       return 4
+def how_heavy(weight):
+    if weight < 3500:
+        return "Not heavy at all, this penguin is clearly hungry!"
+    elif weight >= 3500 and weight < 4500:
+       return "Normal weight penguin, he is eating well!"
+    elif weight >= 4500:
+       return "Heavy penguin, its eating way too much!"
     else:
         # This observation has bad data
        return None
 
-calculate_life_quartile(62.5)
+how_heavy(5000)
 ```
 
 ```output
-2
+'Heavy penguin, its eating way too much!'
 ```
 
 That function would typically be used within a `for` loop, but Pandas has
@@ -656,15 +638,15 @@ a different, more efficient way of doing the same thing, and that is by
 is an example, using the definition above.
 
 ```python
-data = pd.read_csv('data/gapminder_all.csv')
-data['life_qrtl'] = data['lifeExp_1952'].apply(calculate_life_quartile)
+data_penguin = pd.read_csv("data/data-palmers-penguins.csv")
+data_penguin['how_heavy'] = data_penguin['body_mass_g'].apply(how_heavy)
 ```
 
 There is a lot in that second line, so let's take it piece by piece.
-On the right side of the `=` we start with `data['lifeExp']`, which is the
-column in the dataframe called `data` labeled `lifExp`.  We use the
-`apply()` to do what it says, apply the `calculate_life_quartile` to the
-value of this column for every row in the dataframe.
+On the right side of the `=` we start with `data_penguin['body_mass_g']`, which is the
+column in the dataframe called `data` labeled `body_mass_g`.  We use the
+`apply()` to do what it says, apply the `how_heavy` to the
+value of this column for every row in the dataframe, to create a new values for every row, under the column `how_heavy`.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

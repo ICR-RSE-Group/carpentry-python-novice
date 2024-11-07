@@ -68,7 +68,7 @@ You can easily create plots directly from a [Pandas dataframes](https://pandas.p
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data_cancer = pd.read_csv('data-palmers-penguins.csv')
+data_penguins = pd.read_csv('data/data-palmers-penguins.csv')
 
 data_penguins['bill_length_mm'].plot(kind='hist', bins=5)
 ```
@@ -127,7 +127,7 @@ import numpy as np
 plt.figure(figsize=(4,4))
 sns.scatterplot(data=data_penguins, x='bill_length_mm', y='body_mass_g', hue='species')
 
-slope, intercept = np.polyfit(data['bill_length_mm'], data_penguins['body_mass_g'], 1) # 1 because linear (polynomial)
+slope, intercept = np.polyfit(data_penguins['bill_length_mm'], data_penguins['body_mass_g'], 1) # 1 because linear (polynomial)
 x = np.linspace(data_penguins['bill_length_mm'].min(), data_penguins['bill_length_mm'].max(), 100)
 y = slope * x + intercept
 plt.plot(x, y, color='black', label=f'Linear fit: y = {slope:.2f}x + {intercept:.2f}')
@@ -200,7 +200,7 @@ Use `seaborn` documentation to create the following plots:
 
 ```python
 plt.figure(figsize=(8,6))
-data.boxplot(column='body_mass_g', by='species')
+data_penguins.boxplot(column='body_mass_g', by='species')
 ```
 
 ![](fig/boxplot.png){}
@@ -259,7 +259,8 @@ in a local variable (with `plt.gcf`) and call the `savefig` class method from
 that variable to save the figure to file.
 
 ```python
-data.plot(kind='bar')
+plt.figure(figsize=(4,4))
+plt.hist(data_penguins['flipper_length_mm'], bins=20)
 fig = plt.gcf() # get current figure
 fig.savefig('my_figure.png')
 ```

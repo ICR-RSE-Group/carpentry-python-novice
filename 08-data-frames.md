@@ -46,7 +46,7 @@ uniquely identifies its *entry* in the DataFrame.
 
 ```python
 import pandas as pd
-data_penguins = pd.read_csv('data-palmers-penguins.csv')
+data_penguins = pd.read_csv('data/data-palmers-penguins.csv')
 print(data_penguins.iloc[0, 0])
 ```
 
@@ -171,10 +171,12 @@ data_penguins.groupby(["species"]).agg({'body_mass_g': 'mean'})
 ```
 
 ```output
-species
-Adelie       3706.164384
-Chinstrap    3733.088235
-Gentoo       5092.436975
+	body_mass_g
+species	
+Adelie	3706.164384
+Chinstrap	3733.088235
+Gentoo	5092.436975
+
 ```
 
 There are some other useful ways in which we can use `groupby()` and `agg()`.
@@ -185,12 +187,13 @@ data_penguins.groupby(["species"]).agg({'body_mass_g': ['mean', 'median', 'std']
 ```
 
 ```output
-                        body_mass_g
-                  mean	median	std
+	body_mass_g
+mean	median	std
 species			
 Adelie	3706.164384	3700.0	458.620135
 Chinstrap	3733.088235	3700.0	384.335081
 Gentoo	5092.436975	5050.0	501.476154
+
 
 ```
 
@@ -201,13 +204,14 @@ data_penguins.groupby(["species", "island"]).agg({'body_mass_g': 'mean', 'bill_l
 ```
 
 ```output
-		            body_mass_g	bill_length_mm
+		body_mass_g	bill_length_mm
 species	island		
 Adelie	Biscoe	3709.659091	38.975000
-            Dream	3701.363636	38.520000
-            Torgersen	3708.510638	39.038298
+Dream	3701.363636	38.520000
+Torgersen	3708.510638	39.038298
 Chinstrap	Dream	3733.088235	48.833824
 Gentoo	Biscoe	5092.436975	47.568067
+
 
 ```
 

@@ -4,11 +4,12 @@ title: Setup
 
 ## Getting the Data
 
-The data we will be using is taken from the [gapminder] dataset.
+The data we will be using is Palmers penguins dataset, made available by Dr. Kristen Gorman and the Palmer Station.
 To obtain it, download and unzip the file
-[python-novice-data.zip](files/python-novice-data.zip).
+[data.zip](files/data.zip).
 In order to follow the presented material, you should launch the JupyterLab
 server in the root directory (see [Starting JupyterLab](episodes/01-run-quit.md#starting-jupyterlab)).
+Create 
 
 ## Installing Python Using Anaconda
 
