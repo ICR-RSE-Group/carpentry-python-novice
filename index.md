@@ -21,7 +21,7 @@ as well (e.g., repl.it, Anaconda).
 
 3. Learners must get the data before class starts:
   please download and unzip the file
-  [python-novice-data.zip](episodes/files/python-novice-data.zip).
+  [data.zip](episodes/files/data.zip).
 
 Please see [the setup instructions](learners/setup.md)
 for more details.
