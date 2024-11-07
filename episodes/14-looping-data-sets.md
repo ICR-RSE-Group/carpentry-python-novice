@@ -25,29 +25,51 @@ exercises: 10
 
 ```python
 import pandas as pd
-for filename in ['data/gapminder_gdp_africa.csv', 'data/gapminder_gdp_asia.csv']:
-    data = pd.read_csv(filename, index_col='country')
+for filename in ['data/data-palmers-penguins.csv', 'data/data-breast-cancer.csv']:
+    data = pd.read_csv(filename)
     print(filename, data.min())
 ```
 
 ```output
-data/gapminder_gdp_africa.csv gdpPercap_1952    298.846212
-gdpPercap_1957    335.997115
-gdpPercap_1962    355.203227
-gdpPercap_1967    412.977514
-⋮ ⋮ ⋮
-gdpPercap_1997    312.188423
-gdpPercap_2002    241.165877
-gdpPercap_2007    277.551859
-dtype: float64
-data/gapminder_gdp_asia.csv gdpPercap_1952    331
-gdpPercap_1957    350
-gdpPercap_1962    388
-gdpPercap_1967    349
-⋮ ⋮ ⋮
-gdpPercap_1997    415
-gdpPercap_2002    611
-gdpPercap_2007    944
+data/data-palmers-penguins.csv species              Adelie
+island               Biscoe
+bill_length_mm         32.1
+bill_depth_mm          13.1
+flipper_length_mm     172.0
+body_mass_g          2700.0
+sex                  Female
+dtype: object
+data/data-breast-cancer.csv diagnosis                    0.000000
+radius_mean                  6.981000
+texture_mean                 9.710000
+perimeter_mean              43.790000
+area_mean                  143.500000
+smoothness_mean              0.052630
+compactness_mean             0.019380
+concavity_mean               0.000000
+concave points_mean          0.000000
+symmetry_mean                0.106000
+fractal_dimension_mean       0.049960
+radius_se                    0.111500
+texture_se                   0.360200
+perimeter_se                 0.757000
+area_se                      6.802000
+smoothness_se                0.001713
+compactness_se               0.002252
+concavity_se                 0.000000
+concave points_se            0.000000
+symmetry_se                  0.007882
+fractal_dimension_se         0.000895
+radius_worst                 7.930000
+texture_worst               12.020000
+perimeter_worst             50.410000
+area_worst                 185.200000
+smoothness_worst             0.071170
+compactness_worst            0.027290
+concavity_worst              0.000000
+concave points_worst         0.000000
+symmetry_worst               0.156500
+fractal_dimension_worst      0.055040
 dtype: float64
 ```
 
@@ -69,9 +91,7 @@ print('all csv files in data directory:', glob.glob('data/*.csv'))
 ```
 
 ```output
-all csv files in data directory: ['data/gapminder_all.csv', 'data/gapminder_gdp_africa.csv', \
-'data/gapminder_gdp_americas.csv', 'data/gapminder_gdp_asia.csv', 'data/gapminder_gdp_europe.csv', \
-'data/gapminder_gdp_oceania.csv']
+all csv files in data directory: ['data/data-palmers-penguins.csv', 'data/data-breast-cancer.csv']
 ```
 
 ```python
@@ -88,34 +108,66 @@ all PDB files: []
   so that simple patterns will find the right data.
 
 ```python
-for filename in glob.glob('data/gapminder_*.csv'):
+for filename in glob.glob('data/data-*.csv'):
     data = pd.read_csv(filename)
-    print(filename, data['gdpPercap_1952'].min())
+    print(filename, data.min())
 ```
 
 ```output
-data/gapminder_all.csv 298.8462121
-data/gapminder_gdp_africa.csv 298.8462121
-data/gapminder_gdp_americas.csv 1397.717137
-data/gapminder_gdp_asia.csv 331.0
-data/gapminder_gdp_europe.csv 973.5331948
-data/gapminder_gdp_oceania.csv 10039.59564
+data/data-palmers-penguins.csv species              Adelie
+island               Biscoe
+bill_length_mm         32.1
+bill_depth_mm          13.1
+flipper_length_mm     172.0
+body_mass_g          2700.0
+sex                  Female
+dtype: object
+data/data-breast-cancer.csv diagnosis                    0.000000
+radius_mean                  6.981000
+texture_mean                 9.710000
+perimeter_mean              43.790000
+area_mean                  143.500000
+smoothness_mean              0.052630
+compactness_mean             0.019380
+concavity_mean               0.000000
+concave points_mean          0.000000
+symmetry_mean                0.106000
+fractal_dimension_mean       0.049960
+radius_se                    0.111500
+texture_se                   0.360200
+perimeter_se                 0.757000
+area_se                      6.802000
+smoothness_se                0.001713
+compactness_se               0.002252
+concavity_se                 0.000000
+concave points_se            0.000000
+symmetry_se                  0.007882
+fractal_dimension_se         0.000895
+radius_worst                 7.930000
+texture_worst               12.020000
+perimeter_worst             50.410000
+area_worst                 185.200000
+smoothness_worst             0.071170
+compactness_worst            0.027290
+concavity_worst              0.000000
+concave points_worst         0.000000
+symmetry_worst               0.156500
+fractal_dimension_worst      0.055040
+dtype: float64
 ```
 
-- This includes all data, as well as per-region data.
+- This includes the minimal data point in both `data-palmers-penguins` and `data-vreast-cancer` datasets.
 - Use a more specific pattern in the exercises to exclude the whole data set.
-- But note that the minimum of the entire data set is also the minimum of one of the data sets,
-  which is a nice check on correctness.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Determining Matches
 
-Which of these files is *not* matched by the expression `glob.glob('data/*as*.csv')`?
+Which of these files is *not* matched by the expression `glob.glob('*as*.csv')`?
 
-1. `data/gapminder_gdp_africa.csv`
-2. `data/gapminder_gdp_americas.csv`
-3. `data/gapminder_gdp_asia.csv`
+1. `gapminder_gdp_africa.csv`
+2. `gapminder_gdp_americas.csv`
+3. `gapminder_gdp_asia.csv`
 
 :::::::::::::::  solution
 
@@ -177,46 +229,35 @@ What other special strings does the [`float` function][float-function] recognize
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Comparing Data
-
-Write a program that reads in the regional data sets
-and plots the average GDP per capita for each region over time
-in a single chart. Pandas will raise an error if it encounters
-non-numeric columns in a dataframe computation so you may need
-to either filter out those columns or tell pandas to ignore them.
-
+Write a program that plots a boxplot of all numeric features distribution in each species. **Hint:** Generate a list of all the numeric columns first. Use F-string to name each plot and to save the plots at separate files.
 
 :::::::::::::::  solution
 
 ## Solution
 
-This solution builds a useful legend by using the [string `split` method][split-method] to
-extract the `region` from the path 'data/gapminder\_gdp\_a\_specific\_region.csv'.
-
 ```python
-import glob
 import pandas as pd
+import seaborn as sns
 import matplotlib.pyplot as plt
-fig, ax = plt.subplots(1,1)
-for filename in glob.glob('data/gapminder_gdp*.csv'):
-    dataframe = pd.read_csv(filename)
-    # extract <region> from the filename, expected to be in the format 'data/gapminder_gdp_<region>.csv'.
-    # we will split the string using the split method and `_` as our separator,
-    # retrieve the last string in the list that split returns (`<region>.csv`), 
-    # and then remove the `.csv` extension from that string.
-    # NOTE: the pathlib module covered in the next callout also offers
-    # convenient abstractions for working with filesystem paths and could solve this as well:
-    # from pathlib import Path
-    # region = Path(filename).stem.split('_')[-1]
-    region = filename.split('_')[-1][:-4] 
-    # pandas raises errors when it encounters non-numeric columns in a dataframe computation
-    # but we can tell pandas to ignore them with the `numeric_only` parameter
-    dataframe.mean(numeric_only=True).plot(ax=ax, label=region)
-    # NOTE: another way of doing this selects just the columns with gdp in their name using the filter method
-    # dataframe.filter(like="gdp").mean().plot(ax=ax, label=region)
 
-plt.legend()
-plt.show()
+numeric_columns = data_penguins.select_dtypes(include=['number']).columns.tolist()
+
+for col in numeric_columns:
+    plt.figure(figsize=(4, 4))
+    sns.boxplot(x='species', y=col, data=data_penguins)
+    plt.title(f"Boxplot of {col} by Species")
+    plt.xlabel('Species')
+    plt.ylabel(col)
+    plt.show()
 ```
+
+![](fig/boxplot_bill_depth_mm.png){}
+
+![](fig/boxplot_bill_length_mm.png){}
+
+![](fig/boxplot_body_mass_g.png){}
+
+![](fig/boxplot_flipper_length_mm.png){}
 
 :::::::::::::::::::::::::
 
@@ -233,7 +274,7 @@ directories. In the example below, we create a `Path` object and inspect its att
 ```python
 from pathlib import Path
 
-p = Path("data/gapminder_gdp_africa.csv")
+p = Path("data/data-palmers-penguins.csv")
 print(p.parent)
 print(p.stem)
 print(p.suffix)
@@ -241,7 +282,7 @@ print(p.suffix)
 
 ```output
 data
-gapminder_gdp_africa
+data-palmers-penguins
 .csv
 ```
 
