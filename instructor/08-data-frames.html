@@ -422,7 +422,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Pandas DataFrames</h1>
-        <p>Last updated on 2024-11-07 |
+        <p>Last updated on 2024-11-08 |
 
         <a href="https://icr-rse-group.github.io/carpentry-python-novice/edit/main/episodes/08-data-frames.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -620,11 +620,11 @@ aggregation on one column:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>	body_mass_g
-species	
-Adelie	3706.164384
-Chinstrap	3733.088235
-Gentoo	5092.436975
+<pre class="output" tabindex="0"><code>	    |  body_mass_g
+species   |	
+Adelie    |	3706.164384
+Chinstrap |	3733.088235
+Gentoo    |	5092.436975
 </code></pre>
 </div>
 <p>There are some other useful ways in which we can use
@@ -639,14 +639,12 @@ deviation of the body mass in different species:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>	body_mass_g
-mean	median	std
-species			
-Adelie	3706.164384	3700.0	458.620135
-Chinstrap	3733.088235	3700.0	384.335081
-Gentoo	5092.436975	5050.0	501.476154
-
-</code></pre>
+<pre class="output" tabindex="0"><code>	      body_mass_g
+          | mean	        |    median   |   std
+species   |			  |             |
+Adelie    |	3706.164384	  |    3700.0   | 458.620135
+Chinstrap |	3733.088235	  |    3700.0   |	384.335081
+Gentoo    |	5092.436975	  |    5050.0   |	501.476154</code></pre>
 </div>
 <p>In case we want to explore two different columns and see how the mean
 of body mass and bill length are different between penguins of different
@@ -660,13 +658,13 @@ aggregations to each column (in this case both are mean):</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>		body_mass_g	bill_length_mm
-species	island		
-Adelie	Biscoe	3709.659091	38.975000
-Dream	3701.363636	38.520000
-Torgersen	3708.510638	39.038298
-Chinstrap	Dream	3733.088235	48.833824
-Gentoo	Biscoe	5092.436975	47.568067
+<pre class="output" tabindex="0"><code>		            body_mass_g	       bill_length_mm
+species   |	island    |		        |
+Adelie    |	Biscoe    |	3709.659091	  |    38.975000
+          | Dream	    | 3701.363636	  |    38.520000
+          | Torgersen |	3708.510638	  |    39.038298
+Chinstrap |	Dream	    | 3733.088235	  |    48.833824
+Gentoo    |	Biscoe    |	5092.436975	  |    47.568067
 
 </code></pre>
 </div>
@@ -1113,8 +1111,8 @@ a named slice.</li>
   "url": "https://icr-rse-group.github.io/carpentry-python-novice/instructor/08-data-frames.html",
   "identifier": "https://icr-rse-group.github.io/carpentry-python-novice/instructor/08-data-frames.html",
   "dateCreated": "2016-01-07",
-  "dateModified": "2024-11-07",
-  "datePublished": "2024-11-07"
+  "dateModified": "2024-11-08",
+  "datePublished": "2024-11-08"
 }
 
   </script><script>
