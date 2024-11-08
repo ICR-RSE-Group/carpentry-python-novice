@@ -171,11 +171,11 @@ data_penguins.groupby(["species"]).agg({'body_mass_g': 'mean'})
 ```
 
 ```output
-	body_mass_g
-species	
-Adelie	3706.164384
-Chinstrap	3733.088235
-Gentoo	5092.436975
+	    |  body_mass_g
+species   |	
+Adelie    |	3706.164384
+Chinstrap |	3733.088235
+Gentoo    |	5092.436975
 
 ```
 
@@ -187,14 +187,12 @@ data_penguins.groupby(["species"]).agg({'body_mass_g': ['mean', 'median', 'std']
 ```
 
 ```output
-	body_mass_g
-mean	median	std
-species			
-Adelie	3706.164384	3700.0	458.620135
-Chinstrap	3733.088235	3700.0	384.335081
-Gentoo	5092.436975	5050.0	501.476154
-
-
+	      body_mass_g
+          | mean	        |    median   |   std
+species   |			  |             |
+Adelie    |	3706.164384	  |    3700.0   | 458.620135
+Chinstrap |	3733.088235	  |    3700.0   |	384.335081
+Gentoo    |	5092.436975	  |    5050.0   |	501.476154
 ```
 
 In case we want to explore two different columns and see how the mean of body mass and bill length are different between penguins of different species, based on the island they live on, we can apply specific aggregations to each column (in this case both are mean):
@@ -204,13 +202,13 @@ data_penguins.groupby(["species", "island"]).agg({'body_mass_g': 'mean', 'bill_l
 ```
 
 ```output
-		body_mass_g	bill_length_mm
-species	island		
-Adelie	Biscoe	3709.659091	38.975000
-Dream	3701.363636	38.520000
-Torgersen	3708.510638	39.038298
-Chinstrap	Dream	3733.088235	48.833824
-Gentoo	Biscoe	5092.436975	47.568067
+		            body_mass_g	       bill_length_mm
+species   |	island    |		        |
+Adelie    |	Biscoe    |	3709.659091	  |    38.975000
+          | Dream	    | 3701.363636	  |    38.520000
+          | Torgersen |	3708.510638	  |    39.038298
+Chinstrap |	Dream	    | 3733.088235	  |    48.833824
+Gentoo    |	Biscoe    |	5092.436975	  |    47.568067
 
 
 ```
