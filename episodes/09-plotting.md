@@ -118,25 +118,39 @@ plt.style.use('ggplot')
 
 Plots in python are usually plotted using `matplotlib` and `seaborn`. Here is an example of plotting the same scatter plot using `seaborn` with points coloured by species. 
 
-We can also add a slope line which describes the correlation between the points, providing additional information about the data. We will need to use some methods from the `numpy` library and therefore need to import it along with `seaborn`.
+
 
 ```python
 import seaborn as sns
-import numpy as np
 
 plt.figure(figsize=(4,4))
 sns.scatterplot(data=data_penguins, x='bill_length_mm', y='body_mass_g', hue='species')
-
-slope, intercept = np.polyfit(data_penguins['bill_length_mm'], data_penguins['body_mass_g'], 1) # 1 because linear (polynomial)
-x = np.linspace(data_penguins['bill_length_mm'].min(), data_penguins['bill_length_mm'].max(), 100)
-y = slope * x + intercept
-plt.plot(x, y, color='black', label=f'Linear fit: y = {slope:.2f}x + {intercept:.2f}')
 
 plt.title('bill_length_mm vs body_mass_g')
 plt.xlabel('bill_length_mm')
 plt.ylabel('body_mass_g')
 plt.legend()
 ```
+We can also add a slope line which describes the correlation between the points, providing additional information about the data. We can do this by calculating the slope and intercept of the line using the `numpy` library and then plotting the line using the `plot` method.
+
+```python
+import seaborn as sns
+
+plt.figure(figsize=(4,4))
+sns.scatterplot(data=data_penguins, x='bill_length_mm', y='body_mass_g', hue='species')
+
+plt.title('bill_length_mm vs body_mass_g')
+plt.xlabel('bill_length_mm')
+plt.ylabel('body_mass_g')
+plt.legend()
+
+import numpy as np
+slope, intercept = np.polyfit(data_penguins['bill_length_mm'], data_penguins['body_mass_g'], 1) # 1 because linear (polynomial)
+x = np.linspace(data_penguins['bill_length_mm'].min(), data_penguins['bill_length_mm'].max(), 100)
+y = slope * x + intercept
+plt.plot(x, y, color='black', label=f'Linear fit: y = {slope:.2f}x + {intercept:.2f}')
+```
+
 
 ![](fig/scatter2.png){}
 
