@@ -422,7 +422,7 @@ most widely used scientific plotting library in Python.</li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Plotting</h1>
-        <p>Last updated on 2024-11-07 |
+        <p>Last updated on 2024-11-10 |
 
         <a href="https://icr-rse-group.github.io/carpentry-python-novice/edit/main/episodes/09-plotting.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -470,7 +470,7 @@ most widely used scientific plotting library in Python.<a class="anchor" aria-la
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre>
 </div>
-<ul><li>Simple plots are then (fairly) simple to create.</li>
+<ul><li>Simple plots are then (fairly) straight-forward to create.</li>
 </ul><div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -593,43 +593,7 @@ get a comprehensive overview of the dataset:</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>sns.pairplot(data_penguins, hue<span class="op">=</span><span class="st">"species"</span>)</span></code></pre>
 </div>
-<figure><img src="../fig/pairplot.png" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="more-examples-of-plots-">More examples of plots.<a class="anchor" aria-label="anchor" href="#more-examples-of-plots-"></a></h2>
-<hr class="half-width"><p>In both <code>matplotlib</code> and <code>seaborn</code>, you can
-plot many types of plots:</p>
-<ul><li>Scatter Plots: useful for visualising relationships between two
-continuous variables.</li>
-<li>Histograms: great for showing the distribution of a single
-continuous variable.</li>
-<li>Bar Plots: effective for comparing categorical data.</li>
-<li>Line Plots: ideal for displaying trends over time or continuous
-data.</li>
-</ul><p>In the following example, we create a histogram to visualize the
-distribution of flipper lengths in the penguins dataset. This plot will
-help us understand how flipper lengths vary across the population.</p>
-<div class="codewrapper sourceCode" id="cb11">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># code for matplotlib</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># plt.hist(data['flipper_length_mm'], bins=20)</span></span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>data_penguins, x<span class="op">=</span><span class="st">'flipper_length_mm'</span>, bins<span class="op">=</span><span class="dv">20</span>)</span></code></pre>
-</div>
-<figure><img src="../fig/histogram1.png" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="enhancing-plots-with-additional-metrics-">Enhancing plots with additional metrics.<a class="anchor" aria-label="anchor" href="#enhancing-plots-with-additional-metrics-"></a></h2>
-<hr class="half-width"><p>It is important to make your diagram display useful statistics. For
-histograms, you can display minimum and maximum values as well as the
-mean value using <code>.axvline()</code> method.</p>
-<div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>data_penguins, x<span class="op">=</span><span class="st">'flipper_length_mm'</span>, bins<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>plt.axvline(data_penguins[<span class="st">'flipper_length_mm'</span>].<span class="bu">min</span>(), label<span class="op">=</span><span class="st">'Min'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>plt.axvline(data_penguins[<span class="st">'flipper_length_mm'</span>].<span class="bu">max</span>(), label<span class="op">=</span><span class="st">'Max'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>plt.axvline(data_penguins[<span class="st">'flipper_length_mm'</span>].mean(), label<span class="op">=</span><span class="st">'Mean'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>plt.legend()</span></code></pre>
-</div>
-<figure><img src="../fig/histogram2.png" class="figure mx-auto d-block"></figure><div id="exploring-other-useful-types-of-plots-with-seaborn" class="callout challenge">
+<figure><img src="../fig/pairplot.png" class="figure mx-auto d-block"></figure><div id="exploring-other-useful-types-of-plots-with-seaborn" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -655,22 +619,22 @@ correlation matrix).</li>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>data_penguins.boxplot(column<span class="op">=</span><span class="st">'body_mass_g'</span>, by<span class="op">=</span><span class="st">'species'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>data_penguins.boxplot(column<span class="op">=</span><span class="st">'body_mass_g'</span>, by<span class="op">=</span><span class="st">'species'</span>)</span></code></pre>
 </div>
-<figure><img src="../fig/boxplot.png" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb14">
+<figure><img src="../fig/boxplot.png" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>sns.violinplot(data<span class="op">=</span>data_penguins, x<span class="op">=</span><span class="st">'island'</span>, y<span class="op">=</span><span class="st">'bill_length_mm'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>sns.violinplot(data<span class="op">=</span>data_penguins, x<span class="op">=</span><span class="st">'island'</span>, y<span class="op">=</span><span class="st">'bill_length_mm'</span>)</span></code></pre>
 </div>
-<figure><img src="../fig/violinplot.png" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb15">
+<figure><img src="../fig/violinplot.png" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>correlation_matrix <span class="op">=</span> data_penguins.select_dtypes(include<span class="op">=</span><span class="st">'number'</span>).corr()</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>correlation_matrix <span class="op">=</span> data_penguins.select_dtypes(include<span class="op">=</span><span class="st">'number'</span>).corr()</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/heatmap.png" class="figure mx-auto d-block"></figure></div>
 </div>
@@ -687,20 +651,20 @@ correlation matrix).</li>
 a file, perhaps to include it in a publication. There is a function in
 the matplotlib.pyplot module that accomplishes this: <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html" class="external-link">savefig</a>.
 Calling this function, e.g. with</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>plt.savefig(<span class="st">'my_figure.png'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>plt.savefig(<span class="st">'my_figure.png'</span>)</span></code></pre>
 </div>
 <p>will save the current figure to the file <code>my_figure.png</code>.
 The file format will automatically be deduced from the file name
 extension (other formats are pdf, ps, eps and svg).</p>
 <p>It is also important to note that you can specify the DPI (dots per
 inch) when saving a figure with plt. Here’s a basic example:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>plt.savefig(<span class="st">'my_figure.png'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>plt.savefig(<span class="st">'my_figure.png'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span></code></pre>
 </div>
 <p>In this example, dpi=300 will save the figure at 300 DPI, which is a
 good quality for printing. This is also important if you are creating a
@@ -716,13 +680,13 @@ in one line. In addition to using <code>plt.savefig</code>, we can save
 a reference to the current figure in a local variable (with
 <code>plt.gcf</code>) and call the <code>savefig</code> class method
 from that variable to save the figure to file.</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>plt.hist(data_penguins[<span class="st">'flipper_length_mm'</span>], bins<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>fig <span class="op">=</span> plt.gcf() <span class="co"># get current figure</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>fig.savefig(<span class="st">'my_figure.png'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>plt.hist(data_penguins[<span class="st">'flipper_length_mm'</span>], bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>fig <span class="op">=</span> plt.gcf() <span class="co"># get current figure</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>fig.savefig(<span class="st">'my_figure.png'</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -774,7 +738,43 @@ Gallery</a> for more options.</li>
 </ul></div>
 </div>
 </div>
-</section></div> <!-- / div.lesson-content -->
+</section><section><h2 class="section-heading" id="more-examples-of-plots-">More examples of plots.<a class="anchor" aria-label="anchor" href="#more-examples-of-plots-"></a></h2>
+<hr class="half-width"><p>In both <code>matplotlib</code> and <code>seaborn</code>, you can
+plot many types of plots:</p>
+<ul><li>Scatter Plots: useful for visualising relationships between two
+continuous variables.</li>
+<li>Histograms: great for showing the distribution of a single
+continuous variable.</li>
+<li>Bar Plots: effective for comparing categorical data.</li>
+<li>Line Plots: ideal for displaying trends over time or continuous
+data.</li>
+</ul><p>In the following example, we create a histogram to visualize the
+distribution of flipper lengths in the penguins dataset. This plot will
+help us understand how flipper lengths vary across the population.</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co"># code for matplotlib</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co"># plt.hist(data['flipper_length_mm'], bins=20)</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>data_penguins, x<span class="op">=</span><span class="st">'flipper_length_mm'</span>, bins<span class="op">=</span><span class="dv">20</span>)</span></code></pre>
+</div>
+<figure><img src="../fig/histogram1.png" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="enhancing-plots-with-additional-metrics-">Enhancing plots with additional metrics.<a class="anchor" aria-label="anchor" href="#enhancing-plots-with-additional-metrics-"></a></h2>
+<hr class="half-width"><p>It is important to make your diagram display useful statistics. For
+histograms, you can display minimum and maximum values as well as the
+mean value using <code>.axvline()</code> method.</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>data_penguins, x<span class="op">=</span><span class="st">'flipper_length_mm'</span>, bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>plt.axvline(data_penguins[<span class="st">'flipper_length_mm'</span>].<span class="bu">min</span>(), label<span class="op">=</span><span class="st">'Min'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>plt.axvline(data_penguins[<span class="st">'flipper_length_mm'</span>].<span class="bu">max</span>(), label<span class="op">=</span><span class="st">'Max'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>plt.axvline(data_penguins[<span class="st">'flipper_length_mm'</span>].mean(), label<span class="op">=</span><span class="st">'Mean'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>plt.legend()</span></code></pre>
+</div>
+<figure><img src="../fig/histogram2.png" class="figure mx-auto d-block"></figure></section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/08-data-frames.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/11-lists.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -832,7 +832,7 @@ Gallery</a> for more options.</li>
   "url": "https://icr-rse-group.github.io/carpentry-python-novice/instructor/09-plotting.html",
   "identifier": "https://icr-rse-group.github.io/carpentry-python-novice/instructor/09-plotting.html",
   "dateCreated": "2016-01-07",
-  "dateModified": "2024-11-07",
+  "dateModified": "2024-11-10",
   "datePublished": "2024-11-10"
 }
 
