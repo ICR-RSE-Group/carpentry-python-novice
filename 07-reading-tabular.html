@@ -558,7 +558,18 @@ dataframe as <code>data_penguins_named.csv</code>.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \</code></pre>
+<pre class="output" tabindex="0"><code>     body_mass_g     sex                name
+0         3750.0    Male  Adelie_Torgersen_0
+1         3800.0  Female  Adelie_Torgersen_1
+2         3250.0  Female  Adelie_Torgersen_2
+3         3450.0  Female  Adelie_Torgersen_3
+4         3650.0    Male  Adelie_Torgersen_4
+..           ...     ...                 ...
+328       4925.0  Female   Gentoo_Biscoe_328
+329       4850.0  Female   Gentoo_Biscoe_329
+330       5750.0    Male   Gentoo_Biscoe_330
+331       5200.0  Female   Gentoo_Biscoe_331
+332       5400.0    Male   Gentoo_Biscoe_332 </code></pre>
 </div>
 <div class="section level3">
 <h3 id="we-can-now-assign-this-new-name-column-as-the-index-so-we-can-refer-to-our-penguins-by-their-name-">We can now assign this new name column as the index so we can refer
@@ -689,7 +700,7 @@ in the same <code>data</code> directory as
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>To read in a CSV, we use <code>pd.read_csv</code> and pass the
 filename <code>'data/data-breast-cancer.csv'</code> to it.
@@ -728,7 +739,7 @@ data?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>We can check out the first five rows of <code>data_cancer</code> by
 executing <code>data_cancer.head()</code> which lets us view the
@@ -825,7 +836,7 @@ of code by ‘chaining’ the commands:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>We need to specify the path to the file of interest in the call to
 <code>pd.read_csv</code>. We first need to ‘jump’ out of the folder
@@ -862,7 +873,7 @@ can use <code>help</code> to get information on how to use
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>In order to write the DataFrame <code>data_cancer</code> to a file
 called <code>processed.csv</code>, execute the following command:</p>
