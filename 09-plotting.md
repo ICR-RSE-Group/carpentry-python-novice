@@ -27,7 +27,7 @@ exercises: 15
 import matplotlib.pyplot as plt
 ```
 
-- Simple plots are then (fairly) simple to create.
+- Simple plots are then (fairly) straight-forward to create.
 
 ```python
 time = [0, 1, 2, 3]
@@ -148,41 +148,7 @@ sns.pairplot(data_penguins, hue="species")
 
 ![](fig/pairplot.png){}
 
-## More examples of plots.
 
-In both `matplotlib` and `seaborn`, you can plot many types of plots:
-
-- Scatter Plots: useful for visualising relationships between two continuous variables.
-- Histograms: great for showing the distribution of a single continuous variable.
-- Bar Plots: effective for comparing categorical data.
-- Line Plots: ideal for displaying trends over time or continuous data.
-
-In the following example, we create a histogram to visualize the distribution of flipper lengths in the penguins dataset. This plot will help us understand how flipper lengths vary across the population.
-
-```python
-plt.figure(figsize=(4,4))
-# code for matplotlib
-# plt.hist(data['flipper_length_mm'], bins=20)
-sns.histplot(data=data_penguins, x='flipper_length_mm', bins=20)
-```
-
-![](fig/histogram1.png){}
-
-## Enhancing plots with additional metrics.
-
-It is important to make your diagram display useful statistics. For histograms, you can display minimum and maximum values as well as the mean value using `.axvline()` method.
-
-```python
-plt.figure(figsize=(4,4))
-sns.histplot(data=data_penguins, x='flipper_length_mm', bins=20)
-
-plt.axvline(data_penguins['flipper_length_mm'].min(), label='Min', color='blue')
-plt.axvline(data_penguins['flipper_length_mm'].max(), label='Max', color='red')
-plt.axvline(data_penguins['flipper_length_mm'].mean(), label='Mean', color='black')
-plt.legend()
-```
-
-![](fig/histogram2.png){}
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -289,4 +255,40 @@ Whenever you are generating plots to go into a paper or a presentation, there ar
 - Can plot many sets of data together.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## More examples of plots.
+
+In both `matplotlib` and `seaborn`, you can plot many types of plots:
+
+- Scatter Plots: useful for visualising relationships between two continuous variables.
+- Histograms: great for showing the distribution of a single continuous variable.
+- Bar Plots: effective for comparing categorical data.
+- Line Plots: ideal for displaying trends over time or continuous data.
+
+In the following example, we create a histogram to visualize the distribution of flipper lengths in the penguins dataset. This plot will help us understand how flipper lengths vary across the population.
+
+```python
+plt.figure(figsize=(4,4))
+# code for matplotlib
+# plt.hist(data['flipper_length_mm'], bins=20)
+sns.histplot(data=data_penguins, x='flipper_length_mm', bins=20)
+```
+
+![](fig/histogram1.png){}
+
+## Enhancing plots with additional metrics.
+
+It is important to make your diagram display useful statistics. For histograms, you can display minimum and maximum values as well as the mean value using `.axvline()` method.
+
+```python
+plt.figure(figsize=(4,4))
+sns.histplot(data=data_penguins, x='flipper_length_mm', bins=20)
+
+plt.axvline(data_penguins['flipper_length_mm'].min(), label='Min', color='blue')
+plt.axvline(data_penguins['flipper_length_mm'].max(), label='Max', color='red')
+plt.axvline(data_penguins['flipper_length_mm'].mean(), label='Mean', color='black')
+plt.legend()
+```
+
+![](fig/histogram2.png){}
 
