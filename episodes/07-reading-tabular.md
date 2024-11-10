@@ -95,9 +95,14 @@ To do this for this dataset we will artifically create a new column called `name
 ```python
 data_penguins['name'] = data_penguins['species'] + '_' + data_penguins['island'] + '_' + data.index.astype(str)
 data_penguins.to_csv('data/data-penguins-named.csv',index=False)
+print(data_penguins)
 ```
 
-## We can now assign this new name column as the index so we can refer to our penguins by their name.
+```output
+    species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \
+```
+
+### We can now assign this new name column as the index so we can refer to our penguins by their name.
 - Pass the name of the column to `read_csv` as its `index_col` parameter to do this.
 - Naming the dataframe `data_penguins_named` tells us what data it includes (`penguins`) and how it is indexed (`by their name`).
 
