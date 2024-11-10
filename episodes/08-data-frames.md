@@ -46,8 +46,20 @@ uniquely identifies its *entry* in the DataFrame.
 
 ```python
 import pandas as pd
-data_penguins = pd.read_csv('data/data-palmers-penguins.csv')
-print(data_penguins.iloc[0, 0])
+data_penguins_named = pd.read_csv('data/data-penguins-named.csv',index_col='name')
+print(data_penguins_named.iloc[0, 0])
+```
+
+```output
+Adelie
+```
+
+## Use `DataFrame.loc[..., ...]` to select values by their (entry) label (aka index name)
+
+- Can specify location by row and/or column name.
+
+```python
+print(data_penguins_named.loc["Adelie_Torgersen_0", "species"])
 ```
 
 ```output
@@ -59,7 +71,7 @@ Adelie
 - Just like Python's usual slicing notation.
 
 ```python
-print(data_penguins.loc[0, :])
+print(data_penguins_named.iloc[0, :])
 ```
 
 ```output
@@ -73,18 +85,53 @@ sex                       Male
 Name: 0, dtype: object
 ```
 
+```python
+print(data_penguins_named.loc["Adelie_Torgersen_0", :])
+```
+
+```output
+species                 Adelie
+island               Torgersen
+bill_length_mm            39.1
+bill_depth_mm             18.7
+flipper_length_mm        181.0
+body_mass_g             3750.0
+sex                       Male
+Name: 0, dtype: object
+```
+
+```python
+print(data_penguins_named.loc[:, "bill_length_mm"])
+```
+
+```output
+name
+Adelie_Torgersen_0    39.1
+Adelie_Torgersen_1    39.5
+Adelie_Torgersen_2    40.3
+Adelie_Torgersen_3    36.7
+Adelie_Torgersen_4    39.3
+                      ... 
+Gentoo_Biscoe_328     47.2
+Gentoo_Biscoe_329     46.8
+Gentoo_Biscoe_330     50.4
+Gentoo_Biscoe_331     45.2
+Gentoo_Biscoe_332     49.9
+Name: bill_length_mm, Length: 333, dtype: float64
+```
+
 ## Use comparisons to select data based on value.
 
 - Comparison is applied element by element.
 - Returns a similarly-shaped dataframe of `True` and `False`.
 
 ```python
-# Use a subset of data to keep output readable.
-subset = data_penguins.loc[:, 'bill_length_mm':'body_mass_g']
+# Use a subset of data.
+subset = data_penguins_named.loc[:, 'bill_length_mm':'flipper_length_mm']
 print('Subset of data:\n', subset)
 
 # Which values were greater than 10000 ?
-print('\nWhere are values large?\n', subset > 100)
+print('\nWhere are values large?\n', subset > 200)
 ```
 
 ```output
@@ -108,42 +155,42 @@ Where are values large?
 - A frame full of Booleans is sometimes called a *mask* because of how it can be used.
 
 ```python
-mask = subset > 100
+mask = subset > 200
 print(subset[mask])
 ```
 
 ```output
-     bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g
-0               NaN            NaN              181.0       3750.0
-1               NaN            NaN              186.0       3800.0
-2               NaN            NaN              195.0       3250.0
-3               NaN            NaN              193.0       3450.0
-4               NaN            NaN              190.0       3650.0
-..              ...            ...                ...          ...
-328             NaN            NaN              214.0       4925.0
-329             NaN            NaN              215.0       4850.0
-330             NaN            NaN              222.0       5750.0
-331             NaN            NaN              212.0       5200.0
-332             NaN            NaN              213.0       5400.0
+     bill_length_mm  bill_depth_mm  flipper_length_mm
+0               NaN            NaN              181.0
+1               NaN            NaN              186.0
+2               NaN            NaN              195.0
+3               NaN            NaN              193.0
+4               NaN            NaN              190.0
+..              ...            ...                ...
+328             NaN            NaN              214.0
+329             NaN            NaN              215.0
+330             NaN            NaN              222.0
+331             NaN            NaN              212.0
+332             NaN            NaN              213.0
 ```
 
 - Get the value where the mask is true, and NaN (Not a Number) where it is false.
 - Useful because NaNs are ignored by operations like max, min, average, etc.
 
 ```python
-print(subset[subset > 100].describe())
+print(subset[subset > 200].describe())
 ```
 
 ```output
-       bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g
-count             0.0            0.0         333.000000   333.000000
-mean              NaN            NaN         200.966967  4207.057057
-std               NaN            NaN          14.015765   805.215802
-min               NaN            NaN         172.000000  2700.000000
-25%               NaN            NaN         190.000000  3550.000000
-50%               NaN            NaN         197.000000  4050.000000
-75%               NaN            NaN         213.000000  4775.000000
-max               NaN            NaN         231.000000  6300.000000
+       bill_length_mm  bill_depth_mm  flipper_length_mm
+count             0.0            0.0         144.000000
+mean              NaN            NaN         215.034722
+std               NaN            NaN           7.819121
+min               NaN            NaN         201.000000
+25%               NaN            NaN         210.000000
+50%               NaN            NaN         215.000000
+75%               NaN            NaN         220.000000
+max               NaN            NaN         231.000000
 ```
 
 ## Group By: split-apply-combine
@@ -152,7 +199,7 @@ Pandas vectorizing methods and grouping operations are features that provide use
 much flexibility to analyse their data.
 
 ```python
-data_penguins.groupby('species')['body_mass_g'].mean()
+data_penguins_named.groupby('species')['body_mass_g'].mean()
 ```
 
 ```output
@@ -163,11 +210,26 @@ Gentoo       5092.436975
 Name: body_mass_g, dtype: float64
 ```
 
+```python
+data_penguins_named.groupby(['species','island'])['bill_length_mm'].mean()
+```
+
+```output
+species    island   
+Adelie     Biscoe       38.975000
+           Dream        38.520000
+           Torgersen    39.038298
+Chinstrap  Dream        48.833824
+Gentoo     Biscoe       47.568067
+Name: bill_length_mm, dtype: float64
+```
+
+
 A different way in which you could get the same output is by using an additional function `.agg()`.
 Here is an example of a single aggregation on one column:
 
 ```python 
-data_penguins.groupby(["species"]).agg({'body_mass_g': 'mean'})
+data_penguins_named.groupby(["species"]).agg({'body_mass_g': 'mean'})
 ```
 
 ```output
@@ -179,11 +241,16 @@ Gentoo    |	5092.436975
 
 ```
 
+And again with a second layer to groupby of island:        
+```python
+data_penguins_named.groupby(["species","island"]).agg({'body_mass_g': 'mean'})
+```
+
 There are some other useful ways in which we can use `groupby()` and `agg()`.
 Here we are preforming multiple aggregation on single column to see mean, median and standard deviation of the body mass in different species:
 
 ```python
-data_penguins.groupby(["species"]).agg({'body_mass_g': ['mean', 'median', 'std']})
+data_penguins_named.groupby(["species"]).agg({'body_mass_g': ['mean', 'median', 'std']})
 ```
 
 ```output
@@ -195,25 +262,24 @@ Chinstrap |	3733.088235	  |    3700.0   |	384.335081
 Gentoo    |	5092.436975	  |    5050.0   |	501.476154
 ```
 
-In case we want to explore two different columns and see how the mean of body mass and bill length are different between penguins of different species, based on the island they live on, we can apply specific aggregations to each column (in this case both are mean):
+In case we want to explore two different columns and see how the mean of body mass and bill length are different between penguins of different species, based on the island they live on, we can apply specific aggregations to each column (in this case both are mean). Use `.reset_index()` at the end if you would like to result in a dataframe:
 
 ```python
-data_penguins.groupby(["species", "island"]).agg({'body_mass_g': 'mean', 'bill_length_mm': 'mean'})
+new_penguin_data = data_penguins_named.groupby(["species", "island"]).agg({'body_mass_g': 'mean', 'bill_length_mm': 'mean'}).reset_index()
+print(new_penguin_data)
 ```
 
 ```output
-		            body_mass_g	       bill_length_mm
-species   |	island    |		        |
-Adelie    |	Biscoe    |	3709.659091	  |    38.975000
-          | Dream	    | 3701.363636	  |    38.520000
-          | Torgersen |	3708.510638	  |    39.038298
-Chinstrap |	Dream	    | 3733.088235	  |    48.833824
-Gentoo    |	Biscoe    |	5092.436975	  |    47.568067
-
+     species     island  body_mass_g  bill_length_mm
+0     Adelie     Biscoe  3709.659091       38.975000
+1     Adelie      Dream  3701.363636       38.520000
+2     Adelie  Torgersen  3708.510638       39.038298
+3  Chinstrap      Dream  3733.088235       48.833824
+4     Gentoo     Biscoe  5092.436975       47.568067
 
 ```
 
-Use `.reset_index()` at the end if you would like to result in a dataframe.
+
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
