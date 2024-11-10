@@ -99,7 +99,18 @@ print(data_penguins)
 ```
 
 ```output
-    species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \
+     body_mass_g     sex                name  
+0         3750.0    Male  Adelie_Torgersen_0  
+1         3800.0  Female  Adelie_Torgersen_1  
+2         3250.0  Female  Adelie_Torgersen_2  
+3         3450.0  Female  Adelie_Torgersen_3  
+4         3650.0    Male  Adelie_Torgersen_4  
+..           ...     ...                 ...  
+328       4925.0  Female   Gentoo_Biscoe_328  
+329       4850.0  Female   Gentoo_Biscoe_329  
+330       5750.0    Male   Gentoo_Biscoe_330  
+331       5200.0  Female   Gentoo_Biscoe_331  
+332       5400.0    Male   Gentoo_Biscoe_332 
 ```
 
 ### We can now assign this new name column as the index so we can refer to our penguins by their name.
