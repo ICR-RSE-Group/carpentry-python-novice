@@ -87,37 +87,45 @@ FileNotFoundError: [Errno 2] No such file or directory: 'data/data-palmers-pengu
 
 ## Use `index_col` to specify that a column's values should be used as row headings.
 
-- Row headings are numbers (0 and 1 in this case).
-- Really want to index by country.
-- Pass the name of the column to `read_csv` as its `index_col` parameter to do this.
-- Naming the dataframe `data_penguins_species` tells us what data it includes (`penguins`) and how it is indexed (`species`).
+- With an index, row headings are numbers (0 to 332 in this case).
+- We might prefer to index by something recognisable like a name or a date or a location if that is unique for an observation.
+
+To do this for this dataset we will artifically create a new column called `name` and use it as the index. We will save the new dataframe as `data_penguins_named.csv`.  
 
 ```python
-data_penguins_species = pd.read_csv('data/data-palmers-penguins.csv', index_col='species')
-print(data_penguins_species)
+data_penguins['name'] = data_penguins['species'] + '_' + data_penguins['island'] + '_' + data.index.astype(str)
+data_penguins.to_csv('data/data-penguins-named.csv',index=False)
+```
+
+## We can now assign this new name column as the index so we can refer to our penguins by their name.
+- Pass the name of the column to `read_csv` as its `index_col` parameter to do this.
+- Naming the dataframe `data_penguins_named` tells us what data it includes (`penguins`) and how it is indexed (`by their name`).
+
+```python
+data_penguins_named = pd.read_csv('data/data-penguins-named.csv', index_col='name')
+print(data_penguins_named)
 ```
 
 ```output
-	island	bill_length_mm	bill_depth_mm	flipper_length_mm	body_mass_g	sex
-species						
-Adelie	Torgersen	39.1	18.7	181.0	3750.0	Male
-Adelie	Torgersen	39.5	17.4	186.0	3800.0	Female
-Adelie	Torgersen	40.3	18.0	195.0	3250.0	Female
-Adelie	Torgersen	36.7	19.3	193.0	3450.0	Female
-Adelie	Torgersen	39.3	20.6	190.0	3650.0	Male
-...	...	...	...	...	...	...
-Gentoo	Biscoe	47.2	13.7	214.0	4925.0	Female
-Gentoo	Biscoe	46.8	14.3	215.0	4850.0	Female
-Gentoo	Biscoe	50.4	15.7	222.0	5750.0	Male
-Gentoo	Biscoe	45.2	14.8	212.0	5200.0	Female
-Gentoo	Biscoe	49.9	16.1	213.0	5400.0	Male
-
+                   species     island  bill_length_mm  bill_depth_mm  \
+name                                                                   
+Adelie_Torgersen_0  Adelie  Torgersen            39.1           18.7   
+Adelie_Torgersen_1  Adelie  Torgersen            39.5           17.4   
+Adelie_Torgersen_2  Adelie  Torgersen            40.3           18.0   
+Adelie_Torgersen_3  Adelie  Torgersen            36.7           19.3   
+Adelie_Torgersen_4  Adelie  Torgersen            39.3           20.6   
+...                    ...        ...             ...            ...   
+Gentoo_Biscoe_328   Gentoo     Biscoe            47.2           13.7   
+Gentoo_Biscoe_329   Gentoo     Biscoe            46.8           14.3   
+Gentoo_Biscoe_330   Gentoo     Biscoe            50.4           15.7   
+Gentoo_Biscoe_331   Gentoo     Biscoe            45.2           14.8   
+Gentoo_Biscoe_332   Gentoo     Biscoe            49.9           16.1 
 ```
 
 ## Use the `DataFrame.info()` method to find out more about a dataframe.
 
 ```python
-data_penguins_species.info()
+data_penguins_named.info()
 ```
 
 ```output
@@ -146,12 +154,11 @@ memory usage: 18.3+ KB
 ## The `DataFrame.columns` variable stores information about the dataframe's columns.
 
 - Note that this is data, *not* a method.  (It doesn't have parentheses.)
-  - Like `math.pi`.
-  - So do not use `()` to try to call it.
+  - Like `math.pi`.  
 - Called a *member variable*, or just *member*.
 
 ```python
-print(data_penguins_species.columns)
+print(data_penguins_named.columns)
 ```
 
 ```output
@@ -167,7 +174,7 @@ Index(['species', 'island', 'bill_length_mm', 'bill_depth_mm',
 All other columns are ignored, unless you use the argument `include='all'`.
 
 ```python
-print(data_penguins_species.describe())
+print(data_penguins_named.describe())
 ```
 
 ```output
