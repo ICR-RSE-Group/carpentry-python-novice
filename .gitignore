@@ -53,3 +53,4 @@ vendor/
 .docker-vendor/
 Gemfile.lock
 .*history
+episodes/data/dummy.py
