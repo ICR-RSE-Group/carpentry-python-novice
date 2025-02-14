@@ -32,7 +32,7 @@ exercises: 10
 ```python
 import pandas as pd
 
-data_penguins = pd.read_csv('data/data-palmers-penguins.csv')
+data_penguins = pd.read_csv('data/data-penguins-named.csv.csv')
 print(data_penguins)
 ```
 
@@ -73,47 +73,19 @@ print(data_penguins)
 ## File Not Found
 
 Our lessons store their data files in a `data` sub-directory,
-which is why the path to the file is `data/data-palmers-penguins.csv`.
+which is why the path to the file is `data/data-penguins-named.csv`.
 If you forget to include `data/`,
 or if you include it but your copy of the file is somewhere else,
 you will get a [runtime error](04-built-in.md)
 that ends with a line like this:
 
 ```error
-FileNotFoundError: [Errno 2] No such file or directory: 'data/data-palmers-penguins.csv'
+FileNotFoundError: [Errno 2] No such file or directory: 'data/data-penguins-named.csv'
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Use `index_col` to specify that a column's values should be used as row headings.
-
-- With an index, row headings are numbers (0 to 332 in this case).
-- We might prefer to index by something recognisable like a name or a date or a location if that is unique for an observation.
-
-To do this for this dataset we will artifically create a new column called `name` and use it as the index. We will save the new dataframe as `data_penguins_named.csv`.  
-
-```python
-data_penguins['name'] = data_penguins['species'] + '_' + data_penguins['island'] + '_' + data.index.astype(str)
-data_penguins.to_csv('data/data-penguins-named.csv',index=False)
-print(data_penguins)
-```
-
-```output
-     body_mass_g     sex                name  
-0         3750.0    Male  Adelie_Torgersen_0  
-1         3800.0  Female  Adelie_Torgersen_1  
-2         3250.0  Female  Adelie_Torgersen_2  
-3         3450.0  Female  Adelie_Torgersen_3  
-4         3650.0    Male  Adelie_Torgersen_4  
-..           ...     ...                 ...  
-328       4925.0  Female   Gentoo_Biscoe_328  
-329       4850.0  Female   Gentoo_Biscoe_329  
-330       5750.0    Male   Gentoo_Biscoe_330  
-331       5200.0  Female   Gentoo_Biscoe_331  
-332       5400.0    Male   Gentoo_Biscoe_332 
-```
-
-### We can now assign this new name column as the index so we can refer to our penguins by their name.
 - Pass the name of the column to `read_csv` as its `index_col` parameter to do this.
 - Naming the dataframe `data_penguins_named` tells us what data it includes (`penguins`) and how it is indexed (`by their name`).
 
@@ -210,7 +182,7 @@ max	59.600000	21.500000	231.000000	6300.000000
 
 ## Reading Other Data
 Read the data in `data-breast-cancer.csv`
-(which should be in the same `data` directory as `data-palmers-penguin.csv`)
+(which should be in the same `data` directory as `data-penguins-named.csv`)
 into a variable called `data_cancer`
 and display its summary statistics.
 

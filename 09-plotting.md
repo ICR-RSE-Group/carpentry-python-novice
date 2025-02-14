@@ -68,7 +68,7 @@ You can easily create plots directly from a [Pandas dataframes](https://pandas.p
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data_penguins = pd.read_csv('data/data-palmers-penguins.csv')
+data_penguins = pd.read_csv('data/data-penguins-named.csv')
 
 data_penguins['bill_length_mm'].plot(kind='hist', bins=5)
 ```
