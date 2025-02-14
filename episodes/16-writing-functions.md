@@ -362,7 +362,7 @@ print_date(day=1, month=2, year=2003)
 
 1. `2003/2/1`
 2. We saw examples of using *named arguments* when working with the pandas library. For example, when reading in a dataset
-  using `data = pd.read_csv('data/data-palmers-penguins.csv', index_col='species')`, the last argument `index_col` is a
+  using `data = pd.read_csv('data/data-penguins-named.csv', index_col='species')`, the last argument `index_col` is a
   named argument.
 3. Using named arguments can make code more readable since one can see from the function call what name the different arguments
   have inside the function. It can also reduce the chances of passing arguments in the wrong order, since by using named arguments
@@ -457,7 +457,7 @@ Assume that the following code has been executed:
 ```python
 import pandas as pd
 
-data_penguins = pd.read_csv('data/data-palmers-penguins.csv')
+data_penguins = pd.read_csv('data/data-penguins-named.csv')
 data_penguins_adelie = data_penguins[data_penguins['species'] == 'Adelie']
 ```
 
@@ -471,7 +471,7 @@ data_penguins_adelie = data_penguins[data_penguins['species'] == 'Adelie']
   
   ```python
   def avg_body_mass_for_species(species):
-      data_penguins = pd.read_csv('data/data-palmers-penguins.csv')
+      data_penguins = pd.read_csv('data/data-penguins-named.csv')
       ____
       ____
 
@@ -495,7 +495,7 @@ data_penguins_adelie = data_penguins[data_penguins['species'] == 'Adelie']
   
   ```python
   def avg_body_mass_for_species(species):
-      data_penguins = pd.read_csv('data/data-palmers-penguins.csv')
+      data_penguins = pd.read_csv('data/data-penguins-named.csv')
       
       species_data = data_penguins[data_penguins['species'] == species]
       avg_body_mass = species_data['body_mass_g'].dropna().mean()
@@ -638,7 +638,7 @@ a different, more efficient way of doing the same thing, and that is by
 is an example, using the definition above.
 
 ```python
-data_penguin = pd.read_csv("data/data-palmers-penguins.csv")
+data_penguin = pd.read_csv("data/data-penguins-named.csv")
 data_penguin['how_heavy'] = data_penguin['body_mass_g'].apply(how_heavy)
 ```
 

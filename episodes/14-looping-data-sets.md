@@ -25,13 +25,13 @@ exercises: 10
 
 ```python
 import pandas as pd
-for filename in ['data/data-palmers-penguins.csv', 'data/data-breast-cancer.csv']:
+for filename in ['data/data-penguins-named.csv', 'data/data-breast-cancer.csv']:
     data = pd.read_csv(filename)
     print(filename, data.min())
 ```
 
 ```output
-data/data-palmers-penguins.csv species              Adelie
+data/data-penguins-named.csv species              Adelie
 island               Biscoe
 bill_length_mm         32.1
 bill_depth_mm          13.1
@@ -91,7 +91,7 @@ print('all csv files in data directory:', glob.glob('data/*.csv'))
 ```
 
 ```output
-all csv files in data directory: ['data/data-palmers-penguins.csv', 'data/data-breast-cancer.csv']
+all csv files in data directory: ['data/data-penguins-named.csv', 'data/data-breast-cancer.csv']
 ```
 
 ```python
@@ -114,7 +114,7 @@ for filename in glob.glob('data/data-*.csv'):
 ```
 
 ```output
-data/data-palmers-penguins.csv species              Adelie
+data/data-penguins-named.csv species              Adelie
 island               Biscoe
 bill_length_mm         32.1
 bill_depth_mm          13.1
@@ -156,7 +156,7 @@ fractal_dimension_worst      0.055040
 dtype: float64
 ```
 
-- This includes the minimal data point in both `data-palmers-penguins` and `data-vreast-cancer` datasets.
+- This includes the minimal data point in both `data-penguins-named` and `data-breast-cancer` datasets.
 - Use a more specific pattern in the exercises to exclude the whole data set.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -274,7 +274,7 @@ directories. In the example below, we create a `Path` object and inspect its att
 ```python
 from pathlib import Path
 
-p = Path("data/data-palmers-penguins.csv")
+p = Path("data/data-penguins-named.csv")
 print(p.parent)
 print(p.stem)
 print(p.suffix)
@@ -282,7 +282,7 @@ print(p.suffix)
 
 ```output
 data
-data-palmers-penguins
+data-penguins-named
 .csv
 ```
 
