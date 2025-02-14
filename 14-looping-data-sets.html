@@ -420,7 +420,7 @@ files.</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Looping Over Data Sets</h1>
-        <p>Last updated on 2024-11-07 |
+        <p>Last updated on 2025-02-14 |
 
         <a href="https://icr-rse-group.github.io/carpentry-python-novice/edit/main/episodes/14-looping-data-sets.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -465,14 +465,14 @@ names.<a class="anchor" aria-label="anchor" href="#use-a-for-loop-to-process-fil
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> [<span class="st">'data/data-palmers-penguins.csv'</span>, <span class="st">'data/data-breast-cancer.csv'</span>]:</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> [<span class="st">'data/data-penguins-named.csv'</span>, <span class="st">'data/data-breast-cancer.csv'</span>]:</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    data <span class="op">=</span> pd.read_csv(filename)</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="bu">print</span>(filename, data.<span class="bu">min</span>())</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>data/data-palmers-penguins.csv species              Adelie
+<pre class="output" tabindex="0"><code>data/data-penguins-named.csv species              Adelie
 island               Biscoe
 bill_length_mm         32.1
 bill_depth_mm          13.1
@@ -540,7 +540,7 @@ current directory whose names end with <code>.txt</code>.</li>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>all csv files in data directory: ['data/data-palmers-penguins.csv', 'data/data-breast-cancer.csv']</code></pre>
+<pre class="output" tabindex="0"><code>all csv files in data directory: ['data/data-penguins-named.csv', 'data/data-breast-cancer.csv']</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -566,7 +566,7 @@ consistently so that simple patterns will find the right data.</li>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>data/data-palmers-penguins.csv species              Adelie
+<pre class="output" tabindex="0"><code>data/data-penguins-named.csv species              Adelie
 island               Biscoe
 bill_length_mm         32.1
 bill_depth_mm          13.1
@@ -608,7 +608,7 @@ fractal_dimension_worst      0.055040
 dtype: float64</code></pre>
 </div>
 <ul><li>This includes the minimal data point in both
-<code>data-palmers-penguins</code> and <code>data-vreast-cancer</code>
+<code>data-penguins-named</code> and <code>data-breast-cancer</code>
 datasets.</li>
 <li>Use a more specific pattern in the exercises to exclude the whole
 data set.</li>
@@ -632,7 +632,7 @@ data set.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>1 is not matched by the glob.</p>
 </div>
@@ -670,7 +670,7 @@ data frame.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -712,7 +712,7 @@ save the plots at separate files.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -753,7 +753,7 @@ attributes.</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>p <span class="op">=</span> Path(<span class="st">"data/data-palmers-penguins.csv"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>p <span class="op">=</span> Path(<span class="st">"data/data-penguins-named.csv"</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="bu">print</span>(p.parent)</span>
 <span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="bu">print</span>(p.stem)</span>
 <span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="bu">print</span>(p.suffix)</span></code></pre>
@@ -762,7 +762,7 @@ attributes.</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code><span><span class="va">data</span></span>
-<span><span class="va">data</span><span class="op">-</span><span class="va">palmers</span><span class="op">-</span><span class="va">penguins</span></span>
+<span><span class="va">data</span><span class="op">-</span><span class="va">penguins</span><span class="op">-</span><span class="va">named</span></span>
 <span><span class="va">.csv</span></span></code></pre>
 </div>
 <p><strong>Hint:</strong> Check all available attributes and methods on
@@ -844,8 +844,8 @@ files.</li>
   "url": "https://icr-rse-group.github.io/carpentry-python-novice/14-looping-data-sets.html",
   "identifier": "https://icr-rse-group.github.io/carpentry-python-novice/14-looping-data-sets.html",
   "dateCreated": "2016-01-07",
-  "dateModified": "2024-11-07",
-  "datePublished": "2025-02-11"
+  "dateModified": "2025-02-14",
+  "datePublished": "2025-02-14"
 }
 
   </script><script>
