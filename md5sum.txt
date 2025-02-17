@@ -29,4 +29,4 @@
 "learners/setup.md" "caa0207314eb4f24ad66eb14a07c4830" "site/built/setup.md" "2024-11-08"
 "profiles/learner-profiles.md" "60b93493cf1da06dfd63255d73854461" "site/built/learner-profiles.md" "2023-05-02"
 "sessions/2024_11_11.md" "5502c5a9dedc97f90e475dc733b08f13" "site/built/2024_11_11.md" "2024-11-10"
-"sessions/2025_02_17.md" "0a2566fc204eaa5f13f2696082fe8096" "site/built/2025_02_17.md" "2025-02-17"
+"sessions/2025_02_17.md" "c14256f457d32680234792be2151c427" "site/built/2025_02_17.md" "2025-02-17"
