@@ -423,7 +423,7 @@ about data.</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Reading Tabular Data into DataFrames</h1>
-        <p>Last updated on 2025-02-14 |
+        <p>Last updated on 2025-09-28 |
 
         <a href="https://icr-rse-group.github.io/carpentry-python-novice/edit/main/episodes/07-reading-tabular.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -479,7 +479,7 @@ code.</li>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>data_penguins <span class="op">=</span> pd.read_csv(<span class="st">'data/data-penguins-named.csv.csv'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>data_penguins <span class="op">=</span> pd.read_csv(<span class="st">'data/data-penguins-named.csv'</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="bu">print</span>(data_penguins)</span></code></pre>
 </div>
 <div class="codewrapper">
@@ -558,17 +558,17 @@ data it includes (<code>penguins</code>) and how it is indexed
 </h3>
 <pre class="output" tabindex="0"><code>                   species     island  bill_length_mm  bill_depth_mm  \
 name
-Adelie_Torgersen_0  Adelie  Torgersen            39.1           18.7
-Adelie_Torgersen_1  Adelie  Torgersen            39.5           17.4
-Adelie_Torgersen_2  Adelie  Torgersen            40.3           18.0
-Adelie_Torgersen_3  Adelie  Torgersen            36.7           19.3
-Adelie_Torgersen_4  Adelie  Torgersen            39.3           20.6
+Raymond      Adelie  Torgersen            39.1           18.7
+Marion       Adelie  Torgersen            39.5           17.4
+Fiona        Adelie  Torgersen            40.3           18.0
+Ellie        Adelie  Torgersen            36.7           19.3
+Luke         Adelie  Torgersen            39.3           20.6
 ...                    ...        ...             ...            ...
-Gentoo_Biscoe_328   Gentoo     Biscoe            47.2           13.7
-Gentoo_Biscoe_329   Gentoo     Biscoe            46.8           14.3
-Gentoo_Biscoe_330   Gentoo     Biscoe            50.4           15.7
-Gentoo_Biscoe_331   Gentoo     Biscoe            45.2           14.8
-Gentoo_Biscoe_332   Gentoo     Biscoe            49.9           16.1 </code></pre>
+Donna        Gentoo     Biscoe            47.2           13.7
+Mary         Gentoo     Biscoe            46.8           14.3
+Roger        Gentoo     Biscoe            50.4           15.7
+Elizabeth    Gentoo     Biscoe            45.2           14.8
+Stewart      Gentoo     Biscoe            49.9           16.1 </code></pre>
 </div>
 </section><section><h2 class="section-heading" id="use-the-dataframe-info-method-to-find-out-more-about-a-dataframe-">Use the <code>DataFrame.info()</code> method to find out more about
 a dataframe.<a class="anchor" aria-label="anchor" href="#use-the-dataframe-info-method-to-find-out-more-about-a-dataframe-"></a></h2>
@@ -668,7 +668,7 @@ in the same <code>data</code> directory as
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>To read in a CSV, we use <code>pd.read_csv</code> and pass the
 filename <code>'data/data-breast-cancer.csv'</code> to it.
@@ -708,7 +708,7 @@ data?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>We can check out the first five rows of <code>data_cancer</code> by
 executing <code>data_cancer.head()</code> which lets us view the
@@ -806,7 +806,7 @@ of code by ‘chaining’ the commands:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>We need to specify the path to the file of interest in the call to
 <code>pd.read_csv</code>. We first need to ‘jump’ out of the folder
@@ -844,7 +844,7 @@ can use <code>help</code> to get information on how to use
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>In order to write the DataFrame <code>data_cancer</code> to a file
 called <code>processed.csv</code>, execute the following command:</p>
@@ -949,7 +949,7 @@ data.</li>
   "url": "https://icr-rse-group.github.io/carpentry-python-novice/07-reading-tabular.html",
   "identifier": "https://icr-rse-group.github.io/carpentry-python-novice/07-reading-tabular.html",
   "dateCreated": "2016-01-07",
-  "dateModified": "2025-02-14",
+  "dateModified": "2025-09-28",
   "datePublished": "2025-09-28"
 }
 
