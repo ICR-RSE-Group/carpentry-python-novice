@@ -32,7 +32,7 @@ exercises: 10
 ```python
 import pandas as pd
 
-data_penguins = pd.read_csv('data/data-penguins-named.csv.csv')
+data_penguins = pd.read_csv('data/data-penguins-named.csv')
 print(data_penguins)
 ```
 
@@ -97,17 +97,17 @@ print(data_penguins_named)
 ```output
                    species     island  bill_length_mm  bill_depth_mm  \
 name                                                                   
-Adelie_Torgersen_0  Adelie  Torgersen            39.1           18.7   
-Adelie_Torgersen_1  Adelie  Torgersen            39.5           17.4   
-Adelie_Torgersen_2  Adelie  Torgersen            40.3           18.0   
-Adelie_Torgersen_3  Adelie  Torgersen            36.7           19.3   
-Adelie_Torgersen_4  Adelie  Torgersen            39.3           20.6   
+Raymond      Adelie  Torgersen            39.1           18.7   
+Marion       Adelie  Torgersen            39.5           17.4   
+Fiona        Adelie  Torgersen            40.3           18.0   
+Ellie        Adelie  Torgersen            36.7           19.3   
+Luke         Adelie  Torgersen            39.3           20.6   
 ...                    ...        ...             ...            ...   
-Gentoo_Biscoe_328   Gentoo     Biscoe            47.2           13.7   
-Gentoo_Biscoe_329   Gentoo     Biscoe            46.8           14.3   
-Gentoo_Biscoe_330   Gentoo     Biscoe            50.4           15.7   
-Gentoo_Biscoe_331   Gentoo     Biscoe            45.2           14.8   
-Gentoo_Biscoe_332   Gentoo     Biscoe            49.9           16.1 
+Donna        Gentoo     Biscoe            47.2           13.7   
+Mary         Gentoo     Biscoe            46.8           14.3   
+Roger        Gentoo     Biscoe            50.4           15.7   
+Elizabeth    Gentoo     Biscoe            45.2           14.8   
+Stewart      Gentoo     Biscoe            49.9           16.1 
 ```
 
 ## Use the `DataFrame.info()` method to find out more about a dataframe.
